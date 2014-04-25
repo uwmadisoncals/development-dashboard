@@ -20,17 +20,19 @@
 
 			<?php
 
-		$image = get_field('image');
-
-		if( !empty($image) ): ?>
-
-			<img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
-
-		<?php endif; ?>
+		if( function_exists('get_field') && get_field('screenshot') ):
+			$attachment_id = get_field('screenshot'); $size = "medium";
+			$image = wp_get_attachment_image_src($attachment_id, $size);
 
 
-		<h2><?php the_title(); ?></h2>
+			echo "<img class='screenshot' src='".$image[0]."' alt=' ' >";
+
+	endif; ?>
+
 		<div class="entry-content">
+			
+		<h2><?php the_title(); ?></h2>
+
 
 			<?php $owner = get_field('github_organization');
 			$repo = get_field('github_repository');

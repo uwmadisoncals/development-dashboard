@@ -1,0 +1,83 @@
+$text-gray: #3e3e3e;
+$text-white: rgba(255,255,255,0.9);
+
+
+/* Override styles from bones */
+
+.header, .footer {
+  background-color: transparent;
+  color: $text-white;
+}
+
+#logo {
+  margin-bottom: 0px;
+
+  a {
+    color: $text-white;
+  }
+
+}
+
+
+/* Add my new styles */
+
+body {
+  font-family: "Open Sans", "Raleway", sans-serif;
+  background: url(../images/dashboard_bg.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
+
+  font-family: "Raleway", "Open Sans", sans-serif;
+  font-weight: 300;
+
+  a {
+    font-family: "Raleway", "Open Sans", sans-serif;
+    font-weight: 300;
+  }
+
+}
+
+.subHeading {
+  font-family: "Open Sans", "Raleway", sans-serif;
+  color: $text-gray;
+  margin-bottom: 2em;
+  position: relative;
+  height: 1em;
+
+  .message {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  }
+}
+
+
+.cardContainer {
+  width: 32%;
+  background: #fff;
+  border-radius: 4px;
+  box-sizing: border-box;
+
+  margin-right: 1%;
+  float: left;
+  box-shadow: 0px 1px 4px rgba(0,0,0,0.3);
+  overflow: hidden;
+
+  .screenshot {
+    width: 100%;
+
+  }
+
+  .entry-content {
+    padding: 2em;
+  }
+
+  h2 {
+    margin-top: 0px;
+  }
+}

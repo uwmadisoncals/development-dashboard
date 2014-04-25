@@ -4,7 +4,7 @@
 
         <div id="inner-content" class="wrap cf">
 
-            <div id="main" class="m-all t-2of3 d-5of7 cf" role="main">
+            <div id="main" class="m-all cf" role="main">
 
               <?php
 require_once(__DIR__ . '/client/GitHubClient.php'); ?>
@@ -15,7 +15,21 @@ require_once(__DIR__ . '/client/GitHubClient.php'); ?>
 <?php $args = array( 'post_type' => 'projects', 'posts_per_page' => 100 );
 $loop = new WP_Query( $args );
 while ( $loop->have_posts() ) : $loop->the_post(); ?>
-  <?php the_title(); ?>
+
+  <div class="cardContainer">
+
+    <?php
+
+  $image = get_field('image');
+
+  if( !empty($image) ): ?>
+
+  	<img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+
+  <?php endif; ?>
+
+
+  <h2><?php the_title(); ?></h2>
   <div class="entry-content">
 
     <?php $owner = get_field('github_organization');
@@ -41,6 +55,7 @@ while ( $loop->have_posts() ) : $loop->the_post(); ?>
 
   <?php the_content(); ?>
   </div>
+</div>
 <?php endwhile; wp_reset_query(); ?>
 
 
