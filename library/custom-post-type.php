@@ -32,7 +32,7 @@ function custom_post_example() {
 			'singular_name' => __( 'Project', 'bonestheme' ), /* This is the individual type */
 			'all_items' => __( 'All Projects', 'bonestheme' ), /* the all items menu item */
 			'add_new' => __( 'Add a new Project', 'bonestheme' ), /* The add new menu item */
-			'add_new_item' => __( 'Add New Custom Type', 'bonestheme' ), /* Add New Display Title */
+			'add_new_item' => __( 'Add New Project', 'bonestheme' ), /* Add New Display Title */
 			'edit' => __( 'Edit Project', 'bonestheme' ), /* Edit Dialog */
 			'edit_item' => __( 'Edit Post Types', 'bonestheme' ), /* Edit Display Title */
 			'new_item' => __( 'New Project Type', 'bonestheme' ), /* New Display Title */
