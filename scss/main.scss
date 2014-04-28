@@ -2,6 +2,7 @@ $text-gray: #3e3e3e;
 $text-white: rgba(255,255,255,0.9);
 $orange-red: #f04f00;
 $green: #97cc18;
+$yellow: #c3ad30;
 $blue: #7ebcf0;
 $blue-hover: #5394cb;
 
@@ -85,16 +86,18 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
 }
 
 .cardContainer {
-  width: 32%;
+  width: 31%;
   background: #fff;
   border-radius: 4px;
   box-sizing: border-box;
   position: relative;
-  margin-right: 1%;
-  margin-bottom: 1%;
+  margin-right: 2%;
+  margin-bottom: 2%;
   float: left;
   box-shadow: 0px 1px 4px rgba(0,0,0,0.3);
   min-height: 400px;
+
+
 
   .screenshotContainer {
     position: relative;
@@ -102,6 +105,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     height: 170px;
+    width: 100%;
 
     .overlay {
       position: absolute;
@@ -159,6 +163,18 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
     font-size: 1.5em;
     padding-right: 26%;
     color: $green;
+  }
+
+  h2 a {
+    margin-top: 0px;
+    font-size: 1em;
+
+    color: $green;
+  }
+
+  h2 a:hover {
+    color: $orange-red;
+
   }
 
   .description {
@@ -224,7 +240,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
       }
 
       svg.stash {
-        transform: rotate(180deg);
+        transform: rotate(60deg);
 
 
         path, circle {
@@ -233,8 +249,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
       }
 
       svg.ftp {
-        transform: matrix(1, -0.2, 0, 1, 0, 0);
-
+        transform: matrix(1, -0.2, 0, 1, 0, 0) translate(0px, -3px);
 
         path, circle {
           fill: rgba(255,255,255,0.8);
@@ -267,6 +282,56 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
     color: rgba(0,0,0,0.5);
     z-index:2;
     font-size: 10px;
+  }
+
+  .responseContainer {
+    position: absolute;
+    bottom: 22px;
+    right: -10px;
+    display: block;
+    width: auto;
+    overflow: hidden;
+    color: rgba(255,255,255,1);
+    background: $green;
+    padding: 0.4em;
+    padding-left: 1em;
+    padding-right: 1em;
+    border-top-left-radius: 2em;
+    border-bottom-left-radius: 2em;
+    font-size: 15px;
+    text-decoration: none;
+    transition: 0.4s;
+    box-shadow: 0px 1px 2px rgba(0,0,0,0.2);
+  }
+
+  .responseContainer.warning {
+    background: $yellow;
+  }
+
+  .responseContainer.problem {
+    background: $orange-red;
+  }
+
+  .responseArrow {
+    position: absolute;
+    bottom: 20px;
+    right: -10px;
+    height: 10px;
+    width: 10px;
+    margin-top: 2px;
+
+    svg {
+      polygon {
+        fill: #575757;
+      }
+    }
+  }
+
+  .responseContainer:hover {
+
+    color: #fff;
+
+
   }
 
   .hashLink {

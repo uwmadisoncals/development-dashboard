@@ -61,15 +61,15 @@ h1 a, .h1 a, h2 a, .h2 a, h3 a, .h3 a, h4 a, .h4 a, h5 a, .h5 a {
 }
 
 .cardContainer {
-  width: 32%;
+  width: 31%;
   background: #fff;
   border-radius: 4px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   position: relative;
-  margin-right: 1%;
-  margin-bottom: 1%;
+  margin-right: 2%;
+  margin-bottom: 2%;
   float: left;
   -webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3);
@@ -81,6 +81,7 @@ h1 a, .h1 a, h2 a, .h2 a, h3 a, .h3 a, h4 a, .h4 a, h5 a, .h5 a {
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   height: 170px;
+  width: 100%;
 }
 .cardContainer .screenshotContainer .overlay {
   position: absolute;
@@ -129,6 +130,14 @@ h1 a, .h1 a, h2 a, .h2 a, h3 a, .h3 a, h4 a, .h4 a, h5 a, .h5 a {
   font-size: 1.5em;
   padding-right: 26%;
   color: #97cc18;
+}
+.cardContainer h2 a {
+  margin-top: 0px;
+  font-size: 1em;
+  color: #97cc18;
+}
+.cardContainer h2 a:hover {
+  color: #f04f00;
 }
 .cardContainer .description {
   font-size: 12px;
@@ -179,17 +188,17 @@ h1 a, .h1 a, h2 a, .h2 a, h3 a, .h3 a, h4 a, .h4 a, h5 a, .h5 a {
   fill: rgba(255, 255, 255, 0.8);
 }
 .cardContainer a.dateCircle:hover svg.stash {
-  -webkit-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  transform: rotate(180deg);
+  -webkit-transform: rotate(60deg);
+  -ms-transform: rotate(60deg);
+  transform: rotate(60deg);
 }
 .cardContainer a.dateCircle:hover svg.stash path, .cardContainer a.dateCircle:hover svg.stash circle {
   fill: rgba(255, 255, 255, 0.8);
 }
 .cardContainer a.dateCircle:hover svg.ftp {
-  -webkit-transform: matrix(1, -0.2, 0, 1, 0, 0);
-  -ms-transform: matrix(1, -0.2, 0, 1, 0, 0);
-  transform: matrix(1, -0.2, 0, 1, 0, 0);
+  -webkit-transform: matrix(1, -0.2, 0, 1, 0, 0) translate(0px, -3px);
+  -ms-transform: matrix(1, -0.2, 0, 1, 0, 0) translate(0px, -3px);
+  transform: matrix(1, -0.2, 0, 1, 0, 0) translate(0px, -3px);
 }
 .cardContainer a.dateCircle:hover svg.ftp path, .cardContainer a.dateCircle:hover svg.ftp circle {
   fill: rgba(255, 255, 255, 0.8);
@@ -217,6 +226,47 @@ h1 a, .h1 a, h2 a, .h2 a, h3 a, .h3 a, h4 a, .h4 a, h5 a, .h5 a {
   color: rgba(0, 0, 0, 0.5);
   z-index: 2;
   font-size: 10px;
+}
+.cardContainer .responseContainer {
+  position: absolute;
+  bottom: 22px;
+  right: -10px;
+  display: block;
+  width: auto;
+  overflow: hidden;
+  color: white;
+  background: #97cc18;
+  padding: 0.4em;
+  padding-left: 1em;
+  padding-right: 1em;
+  border-top-left-radius: 2em;
+  border-bottom-left-radius: 2em;
+  font-size: 15px;
+  text-decoration: none;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+}
+.cardContainer .responseContainer.warning {
+  background: #c3ad30;
+}
+.cardContainer .responseContainer.problem {
+  background: #f04f00;
+}
+.cardContainer .responseArrow {
+  position: absolute;
+  bottom: 20px;
+  right: -10px;
+  height: 10px;
+  width: 10px;
+  margin-top: 2px;
+}
+.cardContainer .responseArrow svg polygon {
+  fill: #575757;
+}
+.cardContainer .responseContainer:hover {
+  color: #fff;
 }
 .cardContainer .hashLink {
   position: absolute;

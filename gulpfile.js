@@ -31,7 +31,7 @@ gulp.task('styles', function() {
 
 // Scripts
 gulp.task('scripts', function() {
-  return gulp.src(['js/modernizr.custom.js','js/bitbucket.js','js/jquery.js','js/classie.js','js/uiprogressbutton.js','js/snap.svg-min.js','js/hovers.js','js/localscroll.js','js/scrollto.js','js/parallax.js','js/detectbrowser.js','js/jquery.fitvids.js','js/jquery.knob.js','js/main.js'])
+  return gulp.src(['js/modernizr.custom.js','js/html2canvas.js','js/bitbucket.js','js/jquery.js','js/classie.js','js/uiprogressbutton.js','js/snap.svg-min.js','js/hovers.js','js/localscroll.js','js/scrollto.js','js/parallax.js','js/detectbrowser.js','js/jquery.fitvids.js','js/jquery.knob.js','js/main.js'])
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'))
     .pipe(concat('main.js'))

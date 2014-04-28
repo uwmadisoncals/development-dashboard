@@ -12,11 +12,11 @@
 
 
 
-	<?php $args = array( 'post_type' => 'projects', 'posts_per_page' => 100 );
+	<?php $args = array( 'post_type' => 'projects', 'posts_per_page' => 100, 'orderby' => 'title', 'order' => 'ASC' );
 				$loop = new WP_Query( $args );
 				while ( $loop->have_posts() ) : $loop->the_post(); ?>
 
-		<div class="cardContainer">
+		<div class="cardContainer" data-siteurl="<?php the_field('site_url') ?>">
 
 			<?php
 				if( function_exists('get_field') && get_field('screenshot') ):
@@ -25,15 +25,38 @@
 
 
 					echo "<div class='screenshotContainer'><div class='overlay'><div class='overlaytext'></div></div><img class='screenshot' src='".$image[0]."' alt=' ' ></div>";
-
+				else:
+					echo "<div class='screenshotContainer'><div class='overlay'><div class='overlaytext'></div></div><img class='screenshot' src='http://immediatenet.com/t/l3?Size=1280x1024&URL=http://".get_field('site_url')."' alt=' ' ></div>";
+					//echo "<div class='screenshotContainer'><div class='overlay'><div class='overlaytext'></div></div><img class='screenshot' src='http://api.thumbalizr.com/?url=http://".get_field('site_url')."&width=350' alt=' ' ></div>";
 				endif;
 			?>
+
+
+
 
 			<?php if(get_field('development_model') == "git") {
 
 			if(get_field('git_repo_location') == "github") { ?>
 
-					<a href="#" class="dateCircle" data-tooltip="View on Github">
+
+
+
+
+
+				<?php
+
+				$owner = get_field('github_organization');
+				$repo = get_field('github_repository');
+				//echo "Count: " . count($commits) . "\n";
+
+
+				//$hash = $singlecommit->getSha();
+				//$shadateurl = "http://github.com/".$owner."/".$repo."/commit/".$hash." .authorship local-time";
+				$repourl = "http://github.com/".$owner."/".$repo."/";
+
+				?>
+
+					<a href="<?php echo $repourl; ?>" class="dateCircle" data-tooltip="View on Github">
 							<svg version="1.1" id="Layer_1" class="github" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 								viewBox="0 0 14 12" enable-background="new 0 0 14 12" xml:space="preserve">
 							<g>
@@ -133,7 +156,9 @@
 
 			<div class="entry-content">
 
-			<h2><?php the_title(); ?></h2>
+			<h2><a href="<?php the_permalink(); ?>" data-tooltip="View Details"><?php the_title(); ?></a></h2>
+
+
 
 			<?php
 
@@ -199,12 +224,16 @@
 
 
 
-
-
 			<div class="description">
 					<?php the_content(); ?>
 			</div>
+
+
 		</div>
+		<a href="#" class="responseContainer"><span class="responseContainerData"></span> <span class="repsonseContainerStatus"></span></a>
+		<div class='responseArrow'><svg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 109.6 115.1' enable-background='new 0 0 109.6 115.1' xml:space='preserve'><polygon fill='#AE3424' points='0,0 0,115.1 109.6,0 '/></svg></div>
+
+
 	</div>
 	<?php endwhile; wp_reset_query(); ?>
 
