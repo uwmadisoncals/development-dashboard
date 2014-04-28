@@ -18,6 +18,7 @@ $(document).ready(function() {
   $( "a" ).mouseover(function() {
     var text = $(this).attr("data-tooltip");
     if(text) {
+      $(this).closest(".cardContainer").find(".screenshot").addClass("blur");
       $(this).closest(".cardContainer").find(".overlay").addClass("darken");
       $(this).closest(".cardContainer").find(".overlaytext").text(text);
     }
@@ -26,9 +27,26 @@ $(document).ready(function() {
   $( "a" ).mouseout(function() {
     var text = $(this).attr("data-tooltip");
     if(text) {
+      $(this).closest(".cardContainer").find(".screenshot").removeClass("blur");
       $(this).closest(".cardContainer").find(".overlay").removeClass("darken");
       $(this).closest(".cardContainer").find(".overlaytext").text("");
     }
+  });
+
+
+  var sendDate = (new Date()).getTime();
+
+  $.ajax({
+      //type: "GET", //with response body
+      type: "HEAD", //only headers
+      url: "http://www.cals.wisc.edu",
+      success: function(){
+
+          var receiveDate = (new Date()).getTime();
+
+          var responseTimeMs = receiveDate - sendDate;
+          console.log(responseTimeMs);
+      }
   });
 
 });

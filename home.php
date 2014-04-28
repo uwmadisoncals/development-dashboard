@@ -33,7 +33,7 @@
 
 			if(get_field('git_repo_location') == "github") { ?>
 
-					<a href="#" class="dateCircle" data-tooltip="Github">
+					<a href="#" class="dateCircle" data-tooltip="View on Github">
 							<svg version="1.1" id="Layer_1" class="github" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 								viewBox="0 0 14 12" enable-background="new 0 0 14 12" xml:space="preserve">
 							<g>
@@ -57,7 +57,7 @@
 
 
 			<?php } else if(get_field('git_repo_location') == "bitbucket") { ?>
-				<a href="#" class="dateCircle" data-tooltip="Bitbucket">
+				<a href="#" class="dateCircle" data-tooltip="View on Bitbucket">
 						<svg version="1.1" id="Layer_3" class="bitbucket" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 							viewBox="0 0 69 81" enable-background="new 0 0 69 81" xml:space="preserve">
 						<g>
@@ -77,7 +77,7 @@
 
 <?php } else if(get_field('git_repo_location') == "stash") { ?>
 
-<a href="#" class="dateCircle" data-tooltip="Stash">
+<a href="#" class="dateCircle" data-tooltip="View on Stash">
 		<svg version="1.1" id="Layer_2" class="stash" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 			viewBox="0 0 35.9 35.8" enable-background="new 0 0 35.9 35.8" xml:space="preserve">
 		<g>
@@ -106,7 +106,7 @@
 <?php	} else {
 		//If the site uses just FTP...
 		?>
-		<a href="#" class="dateCircle" data-tooltip="FTP">
+		<a href="#" class="dateCircle" data-tooltip="View FTP Path">
 		<svg version="1.1" class="ftp" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 			viewBox="0 0 33.4 45.6" enable-background="new 0 0 33.4 45.6" xml:space="preserve">
 		<g id="g14">
@@ -168,7 +168,7 @@
 
 					//$hash = $singlecommit->getSha();
 					//$shadateurl = "http://github.com/".$owner."/".$repo."/commit/".$hash." .authorship local-time";
-					echo "<div class='hashLabel'>Latest Commit</div><a href='http://github.com/".$owner."/".$repo."/commit/".$hash."' class='hashLink'>".$hash."<div class='hashFade'></div></a><div class='hashArrow'><svg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 109.6 115.1' enable-background='new 0 0 109.6 115.1' xml:space='preserve'><polygon fill='#AE3424' points='0,0 0,115.1 109.6,0 '/></svg></div>";
+					echo "<div class='hashLabel'>Latest Commit</div><a href='http://github.com/".$owner."/".$repo."/commit/".$hash."' data-tooltip='View Latest Commit' class='hashLink'>".$hash."<div class='hashFade'></div></a><div class='hashArrow'><svg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 109.6 115.1' enable-background='new 0 0 109.6 115.1' xml:space='preserve'><polygon fill='#AE3424' points='0,0 0,115.1 109.6,0 '/></svg></div>";
 
 					?>
 

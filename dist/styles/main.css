@@ -115,6 +115,10 @@ h1 a, .h1 a, h2 a, .h2 a, h3 a, .h3 a, h4 a, .h4 a, h5 a, .h5 a {
 .cardContainer .screenshotContainer .screenshot {
   width: 100%;
 }
+.cardContainer .screenshotContainer .screenshot.blur {
+  -webkit-filter: blur(3px);
+  filter: blur(3px);
+}
 .cardContainer .entry-content {
   padding: 2em;
   padding-top: 2.5em;
