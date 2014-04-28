@@ -102,9 +102,15 @@ h1 a, .h1 a, h2 a, .h2 a, h3 a, .h3 a, h4 a, .h4 a, h5 a, .h5 a {
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: 17px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  opacity: 0;
 }
 .cardContainer .screenshotContainer .overlay.darken {
   background: rgba(0, 0, 0, 0.7);
+}
+.cardContainer .screenshotContainer .overlay.darken .overlaytext {
+  opacity: 1;
 }
 .cardContainer .screenshotContainer .screenshot {
   width: 100%;

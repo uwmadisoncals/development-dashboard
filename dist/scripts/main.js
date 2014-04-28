@@ -2257,15 +2257,20 @@ $(document).ready(function() {
   $(".subHeading .message").fadeIn();
 
 
-  $( ".dateCircle" ).mouseover(function() {
+  $( "a" ).mouseover(function() {
     var text = $(this).attr("data-tooltip");
-    $(this).closest(".cardContainer").find(".overlay").addClass("darken");
-    $(this).closest(".cardContainer").find(".overlaytext").text(text);
+    if(text) {
+      $(this).closest(".cardContainer").find(".overlay").addClass("darken");
+      $(this).closest(".cardContainer").find(".overlaytext").text(text);
+    }
   });
 
-  $( ".dateCircle" ).mouseout(function() {
-    $(this).closest(".cardContainer").find(".overlay").removeClass("darken");
-    $(this).closest(".cardContainer").find(".overlaytext").text("");
+  $( "a" ).mouseout(function() {
+    var text = $(this).attr("data-tooltip");
+    if(text) {
+      $(this).closest(".cardContainer").find(".overlay").removeClass("darken");
+      $(this).closest(".cardContainer").find(".overlaytext").text("");
+    }
   });
 
 });
