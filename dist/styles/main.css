@@ -69,22 +69,49 @@ h1 a, .h1 a, h2 a, .h2 a, h3 a, .h3 a, h4 a, .h4 a, h5 a, .h5 a {
   box-sizing: border-box;
   position: relative;
   margin-right: 1%;
+  margin-bottom: 1%;
   float: left;
   -webkit-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3);
+  min-height: 400px;
 }
 .cardContainer .screenshotContainer {
   position: relative;
   overflow: hidden;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
-  height: 200px;
+  height: 170px;
+}
+.cardContainer .screenshotContainer .overlay {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  z-index: 3;
+  background: rgba(0, 0, 0, 0.1);
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+.cardContainer .screenshotContainer .overlay .overlaytext {
+  text-align: center;
+  margin-top: 70px;
+  color: #fff;
+  font-family: "Open Sans",sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 17px;
+}
+.cardContainer .screenshotContainer .overlay.darken {
+  background: rgba(0, 0, 0, 0.7);
 }
 .cardContainer .screenshotContainer .screenshot {
   width: 100%;
 }
 .cardContainer .entry-content {
   padding: 2em;
+  padding-top: 2.5em;
   position: relative;
 }
 .cardContainer h2 {
@@ -95,15 +122,16 @@ h1 a, .h1 a, h2 a, .h2 a, h3 a, .h3 a, h4 a, .h4 a, h5 a, .h5 a {
 }
 .cardContainer .description {
   font-size: 12px;
+  width: 75%;
 }
-.cardContainer .dateCircle {
-  display: none;
+.cardContainer a.dateCircle:link, .cardContainer a.dateCircle:visited {
+  display: block;
   font-family: "Open Sans";
   position: absolute;
-  top: 160px;
-  left: 40%;
-  width: 70px;
-  height: 70px;
+  top: 130px;
+  left: 39%;
+  width: 77px;
+  height: 77px;
   border-radius: 4em;
   border: 6px solid #fff;
   background: #7ebcf0;
@@ -113,13 +141,64 @@ h1 a, .h1 a, h2 a, .h2 a, h3 a, .h3 a, h4 a, .h4 a, h5 a, .h5 a {
   text-align: center;
   text-transform: uppercase;
   font-size: 13px;
-  padding-top: 9px;
+  padding: 1.1em;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
 }
-.cardContainer .dateCircle span {
-  display: block;
-  font-weight: bold;
-  margin-top: -8px;
-  font-size: 20px;
+.cardContainer a.dateCircle:link svg, .cardContainer a.dateCircle:visited svg {
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  margin-top: -1px;
+}
+.cardContainer a.dateCircle:link svg path, .cardContainer a.dateCircle:link svg circle, .cardContainer a.dateCircle:visited svg path, .cardContainer a.dateCircle:visited svg circle {
+  fill: #fff;
+}
+.cardContainer a.dateCircle:link svg.ftp, .cardContainer a.dateCircle:visited svg.ftp {
+  margin-top: -1px;
+}
+.cardContainer a.dateCircle:link svg.ftp path, .cardContainer a.dateCircle:link svg.ftp circle, .cardContainer a.dateCircle:visited svg.ftp path, .cardContainer a.dateCircle:visited svg.ftp circle {
+  fill: rgba(255, 255, 255, 0.8);
+}
+.cardContainer a.dateCircle:hover {
+  background: #f04f00;
+}
+.cardContainer a.dateCircle:hover svg {
+  margin-top: -1px;
+}
+.cardContainer a.dateCircle:hover svg path, .cardContainer a.dateCircle:hover svg circle {
+  fill: rgba(255, 255, 255, 0.8);
+}
+.cardContainer a.dateCircle:hover svg.stash {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.cardContainer a.dateCircle:hover svg.stash path, .cardContainer a.dateCircle:hover svg.stash circle {
+  fill: rgba(255, 255, 255, 0.8);
+}
+.cardContainer a.dateCircle:hover svg.ftp {
+  -webkit-transform: matrix(1, -0.2, 0, 1, 0, 0);
+  -ms-transform: matrix(1, -0.2, 0, 1, 0, 0);
+  transform: matrix(1, -0.2, 0, 1, 0, 0);
+}
+.cardContainer a.dateCircle:hover svg.ftp path, .cardContainer a.dateCircle:hover svg.ftp circle {
+  fill: rgba(255, 255, 255, 0.8);
+}
+.cardContainer a.dateCircle:hover svg.bitbucket {
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+}
+.cardContainer a.dateCircle:hover svg.bitbucket path, .cardContainer a.dateCircle:hover svg.bitbucket circle {
+  fill: rgba(255, 255, 255, 0.8);
+}
+.cardContainer a.dateCircle:hover svg.github {
+  -webkit-transform: translate(2px, 0px) rotate(10deg);
+  -ms-transform: translate(2px, 0px) rotate(10deg);
+  transform: translate(2px, 0px) rotate(10deg);
+}
+.cardContainer a.dateCircle:hover svg.github path, .cardContainer a.dateCircle:hover svg.github circle {
+  fill: rgba(255, 255, 255, 0.8);
 }
 .cardContainer .hashLabel {
   position: absolute;

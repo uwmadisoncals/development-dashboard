@@ -13,5 +13,17 @@ $(document).ready(function() {
   }
 
   $(".subHeading .message").fadeIn();
-  
+
+
+  $( ".dateCircle" ).mouseover(function() {
+    var text = $(this).attr("data-tooltip");
+    $(this).closest(".cardContainer").find(".overlay").addClass("darken");
+    $(this).closest(".cardContainer").find(".overlaytext").text(text);
+  });
+
+  $( ".dateCircle" ).mouseout(function() {
+    $(this).closest(".cardContainer").find(".overlay").removeClass("darken");
+    $(this).closest(".cardContainer").find(".overlaytext").text("");
+  });
+
 });

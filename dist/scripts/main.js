@@ -3,6 +3,838 @@
  */
 ;window.Modernizr=function(a,b,c){function x(a){j.cssText=a}function y(a,b){return x(prefixes.join(a+";")+(b||""))}function z(a,b){return typeof a===b}function A(a,b){return!!~(""+a).indexOf(b)}function B(a,b){for(var d in a){var e=a[d];if(!A(e,"-")&&j[e]!==c)return b=="pfx"?e:!0}return!1}function C(a,b,d){for(var e in a){var f=b[a[e]];if(f!==c)return d===!1?a[e]:z(f,"function")?f.bind(d||b):f}return!1}function D(a,b,c){var d=a.charAt(0).toUpperCase()+a.slice(1),e=(a+" "+n.join(d+" ")+d).split(" ");return z(b,"string")||z(b,"undefined")?B(e,b):(e=(a+" "+o.join(d+" ")+d).split(" "),C(e,b,c))}var d="2.7.1",e={},f=!0,g=b.documentElement,h="modernizr",i=b.createElement(h),j=i.style,k,l={}.toString,m="Webkit Moz O ms",n=m.split(" "),o=m.toLowerCase().split(" "),p={},q={},r={},s=[],t=s.slice,u,v={}.hasOwnProperty,w;!z(v,"undefined")&&!z(v.call,"undefined")?w=function(a,b){return v.call(a,b)}:w=function(a,b){return b in a&&z(a.constructor.prototype[b],"undefined")},Function.prototype.bind||(Function.prototype.bind=function(b){var c=this;if(typeof c!="function")throw new TypeError;var d=t.call(arguments,1),e=function(){if(this instanceof e){var a=function(){};a.prototype=c.prototype;var f=new a,g=c.apply(f,d.concat(t.call(arguments)));return Object(g)===g?g:f}return c.apply(b,d.concat(t.call(arguments)))};return e}),p.csstransitions=function(){return D("transition")};for(var E in p)w(p,E)&&(u=E.toLowerCase(),e[u]=p[E](),s.push((e[u]?"":"no-")+u));return e.addTest=function(a,b){if(typeof a=="object")for(var d in a)w(a,d)&&e.addTest(d,a[d]);else{a=a.toLowerCase();if(e[a]!==c)return e;b=typeof b=="function"?b():b,typeof f!="undefined"&&f&&(g.className+=" "+(b?"":"no-")+a),e[a]=b}return e},x(""),i=k=null,function(a,b){function l(a,b){var c=a.createElement("p"),d=a.getElementsByTagName("head")[0]||a.documentElement;return c.innerHTML="x<style>"+b+"</style>",d.insertBefore(c.lastChild,d.firstChild)}function m(){var a=s.elements;return typeof a=="string"?a.split(" "):a}function n(a){var b=j[a[h]];return b||(b={},i++,a[h]=i,j[i]=b),b}function o(a,c,d){c||(c=b);if(k)return c.createElement(a);d||(d=n(c));var g;return d.cache[a]?g=d.cache[a].cloneNode():f.test(a)?g=(d.cache[a]=d.createElem(a)).cloneNode():g=d.createElem(a),g.canHaveChildren&&!e.test(a)&&!g.tagUrn?d.frag.appendChild(g):g}function p(a,c){a||(a=b);if(k)return a.createDocumentFragment();c=c||n(a);var d=c.frag.cloneNode(),e=0,f=m(),g=f.length;for(;e<g;e++)d.createElement(f[e]);return d}function q(a,b){b.cache||(b.cache={},b.createElem=a.createElement,b.createFrag=a.createDocumentFragment,b.frag=b.createFrag()),a.createElement=function(c){return s.shivMethods?o(c,a,b):b.createElem(c)},a.createDocumentFragment=Function("h,f","return function(){var n=f.cloneNode(),c=n.createElement;h.shivMethods&&("+m().join().replace(/[\w\-]+/g,function(a){return b.createElem(a),b.frag.createElement(a),'c("'+a+'")'})+");return n}")(s,b.frag)}function r(a){a||(a=b);var c=n(a);return s.shivCSS&&!g&&!c.hasCSS&&(c.hasCSS=!!l(a,"article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}mark{background:#FF0;color:#000}template{display:none}")),k||q(a,c),a}var c="3.7.0",d=a.html5||{},e=/^<|^(?:button|map|select|textarea|object|iframe|option|optgroup)$/i,f=/^(?:a|b|code|div|fieldset|h1|h2|h3|h4|h5|h6|i|label|li|ol|p|q|span|strong|style|table|tbody|td|th|tr|ul)$/i,g,h="_html5shiv",i=0,j={},k;(function(){try{var a=b.createElement("a");a.innerHTML="<xyz></xyz>",g="hidden"in a,k=a.childNodes.length==1||function(){b.createElement("a");var a=b.createDocumentFragment();return typeof a.cloneNode=="undefined"||typeof a.createDocumentFragment=="undefined"||typeof a.createElement=="undefined"}()}catch(c){g=!0,k=!0}})();var s={elements:d.elements||"abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output progress section summary template time video",version:c,shivCSS:d.shivCSS!==!1,supportsUnknownElements:k,shivMethods:d.shivMethods!==!1,type:"default",shivDocument:r,createElement:o,createDocumentFragment:p};a.html5=s,r(b)}(this,b),e._version=d,e._domPrefixes=o,e._cssomPrefixes=n,e.testProp=function(a){return B([a])},e.testAllProps=D,e.prefixed=function(a,b,c){return b?D(a,b,c):D(a,"pfx")},g.className=g.className.replace(/(^|\s)no-js(\s|$)/,"$1$2")+(f?" js "+s.join(" "):""),e}(this,this.document),function(a,b,c){function d(a){return"[object Function]"==o.call(a)}function e(a){return"string"==typeof a}function f(){}function g(a){return!a||"loaded"==a||"complete"==a||"uninitialized"==a}function h(){var a=p.shift();q=1,a?a.t?m(function(){("c"==a.t?B.injectCss:B.injectJs)(a.s,0,a.a,a.x,a.e,1)},0):(a(),h()):q=0}function i(a,c,d,e,f,i,j){function k(b){if(!o&&g(l.readyState)&&(u.r=o=1,!q&&h(),l.onload=l.onreadystatechange=null,b)){"img"!=a&&m(function(){t.removeChild(l)},50);for(var d in y[c])y[c].hasOwnProperty(d)&&y[c][d].onload()}}var j=j||B.errorTimeout,l=b.createElement(a),o=0,r=0,u={t:d,s:c,e:f,a:i,x:j};1===y[c]&&(r=1,y[c]=[]),"object"==a?l.data=c:(l.src=c,l.type=a),l.width=l.height="0",l.onerror=l.onload=l.onreadystatechange=function(){k.call(this,r)},p.splice(e,0,u),"img"!=a&&(r||2===y[c]?(t.insertBefore(l,s?null:n),m(k,j)):y[c].push(l))}function j(a,b,c,d,f){return q=0,b=b||"j",e(a)?i("c"==b?v:u,a,b,this.i++,c,d,f):(p.splice(this.i++,0,a),1==p.length&&h()),this}function k(){var a=B;return a.loader={load:j,i:0},a}var l=b.documentElement,m=a.setTimeout,n=b.getElementsByTagName("script")[0],o={}.toString,p=[],q=0,r="MozAppearance"in l.style,s=r&&!!b.createRange().compareNode,t=s?l:n.parentNode,l=a.opera&&"[object Opera]"==o.call(a.opera),l=!!b.attachEvent&&!l,u=r?"object":l?"script":"img",v=l?"script":u,w=Array.isArray||function(a){return"[object Array]"==o.call(a)},x=[],y={},z={timeout:function(a,b){return b.length&&(a.timeout=b[0]),a}},A,B;B=function(a){function b(a){var a=a.split("!"),b=x.length,c=a.pop(),d=a.length,c={url:c,origUrl:c,prefixes:a},e,f,g;for(f=0;f<d;f++)g=a[f].split("="),(e=z[g.shift()])&&(c=e(c,g));for(f=0;f<b;f++)c=x[f](c);return c}function g(a,e,f,g,h){var i=b(a),j=i.autoCallback;i.url.split(".").pop().split("?").shift(),i.bypass||(e&&(e=d(e)?e:e[a]||e[g]||e[a.split("/").pop().split("?")[0]]),i.instead?i.instead(a,e,f,g,h):(y[i.url]?i.noexec=!0:y[i.url]=1,f.load(i.url,i.forceCSS||!i.forceJS&&"css"==i.url.split(".").pop().split("?").shift()?"c":c,i.noexec,i.attrs,i.timeout),(d(e)||d(j))&&f.load(function(){k(),e&&e(i.origUrl,h,g),j&&j(i.origUrl,h,g),y[i.url]=2})))}function h(a,b){function c(a,c){if(a){if(e(a))c||(j=function(){var a=[].slice.call(arguments);k.apply(this,a),l()}),g(a,j,b,0,h);else if(Object(a)===a)for(n in m=function(){var b=0,c;for(c in a)a.hasOwnProperty(c)&&b++;return b}(),a)a.hasOwnProperty(n)&&(!c&&!--m&&(d(j)?j=function(){var a=[].slice.call(arguments);k.apply(this,a),l()}:j[n]=function(a){return function(){var b=[].slice.call(arguments);a&&a.apply(this,b),l()}}(k[n])),g(a[n],j,b,n,h))}else!c&&l()}var h=!!a.test,i=a.load||a.both,j=a.callback||f,k=j,l=a.complete||f,m,n;c(h?a.yep:a.nope,!!i),i&&c(i)}var i,j,l=this.yepnope.loader;if(e(a))g(a,0,l,0);else if(w(a))for(i=0;i<a.length;i++)j=a[i],e(j)?g(j,0,l,0):w(j)?B(j):Object(j)===j&&h(j,l);else Object(a)===a&&h(a,l)},B.addPrefix=function(a,b){z[a]=b},B.addFilter=function(a){x.push(a)},B.errorTimeout=1e4,null==b.readyState&&b.addEventListener&&(b.readyState="loading",b.addEventListener("DOMContentLoaded",A=function(){b.removeEventListener("DOMContentLoaded",A,0),b.readyState="complete"},0)),a.yepnope=k(),a.yepnope.executeStack=h,a.yepnope.injectJs=function(a,c,d,e,i,j){var k=b.createElement("script"),l,o,e=e||B.errorTimeout;k.src=a;for(o in d)k.setAttribute(o,d[o]);c=j?h:c||f,k.onreadystatechange=k.onload=function(){!l&&g(k.readyState)&&(l=1,c(),k.onload=k.onreadystatechange=null)},m(function(){l||(l=1,c(1))},e),i?k.onload():n.parentNode.insertBefore(k,n)},a.yepnope.injectCss=function(a,c,d,e,g,i){var e=b.createElement("link"),j,c=i?h:c||f;e.href=a,e.rel="stylesheet",e.type="text/css";for(j in d)e.setAttribute(j,d[j]);g||(n.parentNode.insertBefore(e,n),m(c,0))}}(this,document),Modernizr.load=function(){yepnope.apply(window,[].slice.call(arguments,0))};
 
+// Generated by CoffeeScript 1.3.1
+
+/*
+ ,__,    ,__,,__,  ,__,                   ,__,           ,__,      ,__,
+ |  |    |__||  |_,|  |                   |  | ,__,      |  |_,    |__|
+ |  |__, ,__,|  ,_||  |__, ,__, ,__, ,___,|  |/  /  ,__, |  ,_|    ,__, ,___,
+ |  ,_, \|  ||  |  |  ,_, \|  | |  |/ ,__||  ,  /  / __ \|  |      |  |/  __|
+ |  |_|  |  ||  |_,|  |_|  |  |_|  |  |__,|  |\  \|  ___/|  |_,,__,|  |\__  \
+ |______/|__| \___||______/ \_____/ \____||__| \__|\____/ \___||__||  |_____/
+ ,---------------------------------------------------------------|___/------,
+ |  An intuitive JavaScript wrapper for the counterintuitive Bitbucket API  |
+ '--------------------------------------------------------------------------'
+                                            Copyright 2011, David Chambers
+*/
+
+
+(function() {
+  var add_dates, alphabetical, bind, bitbucket, category, date_keys, decorate, del, get, handle, itemize, post, privileges_context, put, query, rename, select, strip_sizes, to_options, to_transformer, transform, transform_changeset, transform_issue, transform_issue_comment, transform_repository, traverse, unnest, url, _fn, _i, _len, _ref,
+    __slice = [].slice,
+    __hasProp = {}.hasOwnProperty,
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
+
+  bitbucket = {};
+
+  bind = function(ctx, fn) {
+    return function() {
+      var args;
+      args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+      return fn.apply(ctx, args);
+    };
+  };
+
+  to_options = function(options, data) {
+    if (options == null) {
+      options = {};
+    }
+    if (typeof options === 'function') {
+      options = {
+        success: options
+      };
+    }
+    if (data !== void 0) {
+      options.data = data;
+    }
+    return options;
+  };
+
+  decorate = function(options, decorator) {
+    var success;
+    options = to_options(options);
+    if (success = options.success) {
+      options.success = function(data, status, xhr) {
+        return success(decorator(data), status, xhr);
+      };
+    }
+    return options;
+  };
+
+  traverse = function(data, path, fn) {
+    var key, match, object, _i, _len;
+    if (match = /^(.+?)[.](.+)$/.exec(path)) {
+      traverse(data[match[1]], match[2], fn);
+    } else if (match = /^\[(.+)\]$/.exec(path)) {
+      path = match[1];
+      for (_i = 0, _len = data.length; _i < _len; _i++) {
+        object = data[_i];
+        fn(object, path);
+      }
+    } else if (match = /^\{(.+)\}$/.exec(path)) {
+      path = match[1];
+      for (key in data) {
+        if (!__hasProp.call(data, key)) continue;
+        object = data[key];
+        fn(object, path);
+      }
+    } else {
+      fn(data, path);
+    }
+    return data;
+  };
+
+  transform = function(options, transformations) {
+    var fn, path;
+    options = to_options(options);
+    for (path in transformations) {
+      if (!__hasProp.call(transformations, path)) continue;
+      fn = transformations[path];
+      fn(path, options);
+    }
+    return options;
+  };
+
+  to_transformer = function(fn) {
+    return function(path, options) {
+      return decorate(options, function(data) {
+        return traverse(data, path, fn);
+      });
+    };
+  };
+
+  date_keys = {
+    utc_created_on: 'date_created',
+    utc_last_updated: 'date_updated',
+    utc_updated_on: 'date_updated'
+  };
+
+  add_dates = to_transformer(function(object, key_string) {
+    var date_string, key, new_key, old_key, _i, _len, _ref, _ref1;
+    _ref = key_string.split(',');
+    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+      key = _ref[_i];
+      _ref1 = key.split(':'), old_key = _ref1[0], new_key = _ref1[1];
+      if (date_string = object[old_key]) {
+        new_key || (new_key = date_keys[old_key] || 'date');
+        delete object[old_key];
+        delete object[old_key.replace(/^utc_?/, '')];
+        object[new_key] = new Date(date_string.replace(' ', 'T'));
+      }
+    }
+    return object;
+  });
+
+  strip_sizes = to_transformer(function(object) {
+    if (object.size === -1) {
+      return delete object.size;
+    }
+  });
+
+  alphabetical = function(a, b) {
+    var aa, bb;
+    if (a === b) {
+      return 0;
+    }
+    aa = a.toLowerCase();
+    bb = b.toLowerCase();
+    if ((aa === bb ? a < b : aa < bb)) {
+      return -1;
+    } else {
+      return 1;
+    }
+  };
+
+  itemize = to_transformer(function(object, key) {
+    var items, new_key, old_key, text, _ref;
+    _ref = key.split(':'), old_key = _ref[0], new_key = _ref[1];
+    if (old_key in object) {
+      text = object[old_key].replace(/^\s+|\s+$/g, '');
+      items = text ? text.split(/\s*[\n\r]\s*/).sort(alphabetical) : [];
+      delete object[old_key];
+      object[new_key || old_key] = items;
+    }
+    return object;
+  });
+
+  rename = to_transformer(function(object, key) {
+    var new_key, old_key, value, _ref;
+    _ref = key.split(':'), old_key = _ref[0], new_key = _ref[1];
+    if (old_key in object) {
+      value = object[old_key];
+      delete object[old_key];
+      object[new_key] = value;
+    }
+    return object;
+  });
+
+  unnest = to_transformer(function(object, key) {
+    var nested_key, nested_keys, _i, _len, _ref, _ref1;
+    _ref = key.split(':'), key = _ref[0], nested_keys = _ref[1];
+    _ref1 = nested_keys.split(',');
+    for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
+      nested_key = _ref1[_i];
+      object[nested_key] = object[key][nested_key];
+    }
+    delete object[key];
+    return object;
+  });
+
+  select = function(key, options) {
+    return decorate(options, function(data) {
+      return data[key];
+    });
+  };
+
+  handle = function(type) {
+    return function() {
+      var data, options, url, _arg, _i;
+      url = arguments[0], _arg = 3 <= arguments.length ? __slice.call(arguments, 1, _i = arguments.length - 1) : (_i = 1, []), options = arguments[_i++];
+      data = _arg[0];
+      options = to_options(options, data);
+      options.type = type;
+      options.url = url;
+      if (type === 'GET' && !bitbucket.proxy_url) {
+        options.dataType = 'jsonp';
+      }
+      return $.ajax(options);
+    };
+  };
+
+  post = handle('POST');
+
+  get = handle('GET');
+
+  put = handle('PUT');
+
+  del = handle('DELETE');
+
+  url = function() {
+    var components, proxy_url;
+    components = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+    proxy_url = bitbucket.proxy_url;
+    return (proxy_url || 'https://bitbucket.org/!api/1.0/') + components.join('/');
+  };
+
+  query = function(params) {
+    var filters, key, keys, value, values, _i, _j, _len, _len1;
+    if (params == null) {
+      params = {};
+    }
+    keys = ((function() {
+      var _results;
+      _results = [];
+      for (key in params) {
+        if (!__hasProp.call(params, key)) continue;
+        _results.push(key);
+      }
+      return _results;
+    })()).sort();
+    if (keys.length === 0) {
+      return '';
+    }
+    filters = [];
+    for (_i = 0, _len = keys.length; _i < _len; _i++) {
+      key = keys[_i];
+      values = params[key];
+      if (!(values instanceof Array)) {
+        values = [values];
+      }
+      for (_j = 0, _len1 = values.length; _j < _len1; _j++) {
+        value = values[_j];
+        filters.push(encodeURIComponent(key) + '=' + encodeURIComponent(value));
+      }
+    }
+    return '?' + filters.join('&');
+  };
+
+  bitbucket.error = (function(_super) {
+
+    __extends(error, _super);
+
+    error.name = 'error';
+
+    function error(message) {
+      if (!(this instanceof error)) {
+        return new error(message);
+      }
+      this.name = 'bitbucket.error';
+      this.message = message;
+    }
+
+    return error;
+
+  })(Error);
+
+  bitbucket.email_addresses = (function() {
+
+    email_addresses.name = 'email_addresses';
+
+    function email_addresses() {
+      if (!(this instanceof email_addresses)) {
+        return new email_addresses;
+      }
+    }
+
+    email_addresses.prototype.url = function(address) {
+      return url.apply(null, ['emails'].concat(__slice.call((address ? [address] : []))));
+    };
+
+    email_addresses.prototype.details = function() {
+      var address, options, _arg, _i;
+      _arg = 2 <= arguments.length ? __slice.call(arguments, 0, _i = arguments.length - 1) : (_i = 0, []), options = arguments[_i++];
+      address = _arg[0];
+      return get(this.url(address), options);
+    };
+
+    email_addresses.prototype.add = function(address, options) {
+      return put(this.url(address), options);
+    };
+
+    email_addresses.prototype.remove = function(address, options) {
+      return del(this.url(address), options);
+    };
+
+    email_addresses.prototype.set_primary = function(address, options) {
+      return post(this.url(address), {
+        primary: true
+      }, options);
+    };
+
+    return email_addresses;
+
+  })();
+
+  bitbucket.ssh_keys = (function() {
+
+    ssh_keys.name = 'ssh_keys';
+
+    function ssh_keys() {
+      if (!(this instanceof ssh_keys)) {
+        return new ssh_keys;
+      }
+    }
+
+    ssh_keys.prototype.url = function(id) {
+      return url.apply(null, ['ssh-keys'].concat(__slice.call((id ? [id] : []))));
+    };
+
+    ssh_keys.prototype.details = function() {
+      var id, options, _arg, _i;
+      _arg = 2 <= arguments.length ? __slice.call(arguments, 0, _i = arguments.length - 1) : (_i = 0, []), options = arguments[_i++];
+      id = _arg[0];
+      return get(this.url(id), rename((id != null ? 'pk:id' : '[pk:id]'), options));
+    };
+
+    ssh_keys.prototype.add = function(attrs, options) {
+      return post(this.url(), attrs, rename('pk:id', options));
+    };
+
+    ssh_keys.prototype.update = function(id, attrs, options) {
+      return put(this.url(id), attrs, rename('pk:id', options));
+    };
+
+    ssh_keys.prototype.remove = function(id, options) {
+      return del(this.url(id), options);
+    };
+
+    return ssh_keys;
+
+  })();
+
+  transform_issue = function(options, attrs, path) {
+    var metadata_keys, transforms;
+    if (path == null) {
+      path = '%';
+    }
+    if (typeof attrs === 'string') {
+      path = attrs;
+      attrs = {};
+    }
+    metadata_keys = ['component', 'kind', 'milestone', 'version'];
+    transforms = {};
+    transforms[path.replace(/%/, 'utc_created_on,utc_last_updated')] = add_dates;
+    transforms[path.replace(/%/, 'metadata:' + metadata_keys.join())] = unnest;
+    return transform(to_options(options, attrs), transforms);
+  };
+
+  transform_issue_comment = function(options, attrs, path) {
+    var transforms;
+    if (path == null) {
+      path = '%';
+    }
+    if (typeof attrs === 'string') {
+      path = attrs;
+      attrs = {};
+    }
+    transforms = {};
+    transforms[path.replace(/%/, 'utc_created_on,utc_updated_on')] = add_dates;
+    transforms[path.replace(/%/, 'author_info:author')] = rename;
+    return transform(to_options(options, attrs), transforms);
+  };
+
+  transform_repository = function(options, attrs, path) {
+    var transforms;
+    if (path == null) {
+      path = '%';
+    }
+    if (typeof attrs === 'string') {
+      path = attrs;
+      attrs = {};
+    }
+    if ((attrs != null ? attrs.mailing_lists : void 0) != null) {
+      attrs.email_mailinglist = attrs.mailing_lists.join('\n');
+      delete attrs.mailing_lists;
+    }
+    transforms = {};
+    transforms[path.replace(/%/, 'utc_created_on,utc_last_updated')] = add_dates;
+    transforms[path.replace(/%/, 'email_mailinglist:mailing_lists')] = itemize;
+    return transform(to_options(options, attrs), transforms);
+  };
+
+  transform_changeset = function(options, path) {
+    var transforms;
+    if (path == null) {
+      path = '%';
+    }
+    transforms = {};
+    transforms[path.replace(/%/, 'utctimestamp')] = add_dates;
+    transforms[path.replace(/%/, 'size')] = strip_sizes;
+    return transform(to_options(options), transforms);
+  };
+
+  bitbucket.flags = {
+    access: {
+      direct: 0x1,
+      via_groups: 0x2
+    },
+    output: {
+      include_groups: 0x4
+    }
+  };
+
+  privileges_context = (function() {
+    var direct, expand, groups, label, level, max, to_label, to_level, _i, _len;
+    to_label = ['read', 'write', 'admin'];
+    to_level = {};
+    for (level = _i = 0, _len = to_label.length; _i < _len; level = ++_i) {
+      label = to_label[level];
+      to_level[label] = level;
+    }
+    max = function() {
+      var label, labels;
+      labels = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+      return to_label[Math.max.apply(Math, (function() {
+        var _j, _len1, _results;
+        _results = [];
+        for (_j = 0, _len1 = labels.length; _j < _len1; _j++) {
+          label = labels[_j];
+          _results.push(to_level[label] || 0);
+        }
+        return _results;
+      })())];
+    };
+    direct = bitbucket.flags.access.direct;
+    expand = bitbucket.flags.access.via_groups;
+    groups = bitbucket.flags.output.include_groups;
+    return function(flags) {
+      return {
+        direct: direct,
+        expand: expand,
+        flags: flags,
+        groups: groups,
+        max: max,
+        privileges: {}
+      };
+    };
+  })();
+
+  bitbucket.repositories = function() {
+    var options, params, _arg, _i;
+    _arg = 2 <= arguments.length ? __slice.call(arguments, 0, _i = arguments.length - 1) : (_i = 0, []), options = arguments[_i++];
+    params = _arg[0];
+    return get(url('repositories') + query(params), transform_repository(options, 'repositories.[%]'));
+  };
+
+  bitbucket.repository = (function() {
+
+    repository.name = 'repository';
+
+    repository.create = function(attrs, options) {
+      var slug, username;
+      username = attrs.username, slug = attrs.slug;
+      if (!(username && slug)) {
+        throw bitbucket.error('"username" and "slug" are required attributes');
+      }
+      if (/^[.]{1,2}$/.test(slug)) {
+        throw bitbucket.error("\"" + slug + "\" is an invalid slug");
+      }
+      if (/[^a-z0-9.-]/.test(slug)) {
+        throw bitbucket.error("\"" + slug + "\" does not match /^[a-z0-9.-]+$/");
+      }
+      delete attrs.username;
+      delete attrs.slug;
+      attrs.name = slug;
+      post(url('repositories'), transform_repository(options, attrs));
+      return repository(username, slug);
+    };
+
+    function repository(username, slug) {
+      var _ref;
+      if (slug == null) {
+        _ref = username.split('/'), username = _ref[0], slug = _ref[1];
+      }
+      if (!(this instanceof repository)) {
+        return new repository(username, slug);
+      }
+      this.username = username;
+      this.slug = slug;
+    }
+
+    repository.prototype.toString = function() {
+      return this.username + '/' + this.slug;
+    };
+
+    repository.prototype.url = function() {
+      var components;
+      components = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+      return url.apply(null, ['repositories', this.username, this.slug].concat(__slice.call(components)));
+    };
+
+    repository.prototype.details = function(options) {
+      return get(this.url(), transform_repository(options));
+    };
+
+    repository.prototype.update = function(attrs, options) {
+      return put(this.url(), transform_repository(options, attrs));
+    };
+
+    repository.prototype.destroy = function(options) {
+      return del(this.url(), options);
+    };
+
+    repository.prototype.branches = function(options) {
+      return get(this.url('branches'), transform(options, {
+        '{utctimestamp}': add_dates,
+        '{size}': strip_sizes
+      }));
+    };
+
+    repository.prototype.changeset = function(rev, options) {
+      return get(this.url('changesets', rev), transform_changeset(options));
+    };
+
+    repository.prototype.changesets = function() {
+      var options, params, _arg, _i;
+      _arg = 2 <= arguments.length ? __slice.call(arguments, 0, _i = arguments.length - 1) : (_i = 0, []), options = arguments[_i++];
+      params = _arg[0];
+      return get(this.url('changesets') + query(params), transform_changeset(options, 'changesets.[%]'));
+    };
+
+    repository.prototype.diffstat = function(rev, options) {
+      return get(this.url('changesets', rev, 'diffstat'), options);
+    };
+
+    repository.prototype.directory = function() {
+      var options, path, rev, _i;
+      rev = arguments[0], path = 3 <= arguments.length ? __slice.call(arguments, 1, _i = arguments.length - 1) : (_i = 1, []), options = arguments[_i++];
+      return get(this.url('src', rev, path), transform(options, {
+        'files.[utctimestamp]': add_dates
+      }));
+    };
+
+    repository.prototype.file = function(rev, path, options) {
+      return get(this.url('src', rev, path), select('data', options));
+    };
+
+    repository.prototype.followers = function(options) {
+      return get(this.url('followers'), select('followers', options));
+    };
+
+    repository.prototype.create_issue = function(attrs, options) {
+      return post(this.url('issues'), transform_issue(options, attrs));
+    };
+
+    repository.prototype.update_issue = function(id, attrs, options) {
+      return put(this.url('issues', id), transform_issue(options, attrs));
+    };
+
+    repository.prototype.delete_issue = function(id, options) {
+      return del(this.url('issues', id), options);
+    };
+
+    repository.prototype.issue = function(id, options) {
+      return get(this.url('issues', id), transform_issue(options));
+    };
+
+    repository.prototype.create_issue_comment = function(id, attrs, options) {
+      return post(this.url('issues', id, 'comments'), transform_issue_comment(options, attrs));
+    };
+
+    repository.prototype.update_issue_comment = function(id, comment_id, attrs, options) {
+      return put(this.url('issues', id, 'comments', comment_id), transform_issue_comment(options, attrs));
+    };
+
+    repository.prototype.delete_issue_comment = function(id, comment_id, options) {
+      return del(this.url('issues', id, 'comments', comment_id), options);
+    };
+
+    repository.prototype.issue_comment = function(id, comment_id, options) {
+      return get(this.url('issues', id, 'comments', comment_id), transform_issue_comment(options));
+    };
+
+    repository.prototype.issue_comments = function(id, options) {
+      return get(this.url('issues', id, 'comments'), transform_issue_comment(options, '[%]'));
+    };
+
+    repository.prototype.issue_followers = function(id, options) {
+      return get(this.url('issues', id, 'followers'), select('followers', options));
+    };
+
+    repository.prototype.issues = function() {
+      var options, params, _arg, _i;
+      _arg = 2 <= arguments.length ? __slice.call(arguments, 0, _i = arguments.length - 1) : (_i = 0, []), options = arguments[_i++];
+      params = _arg[0];
+      return get(this.url('issues') + query(params), transform_issue(options, 'issues.[%]'));
+    };
+
+    repository.prototype.privileges = function(flags, options) {
+      var counter, ctx, error, replied, success, waiting;
+      if (options == null) {
+        options = flags;
+        flags = 0x3;
+      }
+      options = to_options(options);
+      success = options.success || function() {};
+      error = options.error || function() {};
+      ctx = privileges_context(flags);
+      counter = 2;
+      waiting = function() {
+        return --counter > 0;
+      };
+      replied = false;
+      options.error = function(xhr, status, text) {
+        if (!replied) {
+          error(xhr, status, text);
+          return replied = true;
+        }
+      };
+      options.success = bind(ctx, function(data, status, xhr) {
+        var privilege, user, username, _i, _len, _ref;
+        if (this.flags & this.direct) {
+          for (_i = 0, _len = data.length; _i < _len; _i++) {
+            _ref = data[_i], privilege = _ref.privilege, user = _ref.user;
+            username = user.username;
+            this.privileges[username] = this.max(this.privileges[username], privilege);
+          }
+        }
+        if (!waiting()) {
+          return success(this.privileges, status, xhr);
+        }
+      });
+      get(url('privileges', this), options);
+      options.success = bind(ctx, function(data, status, xhr) {
+        var group, privilege, username, _i, _j, _len, _len1, _ref, _ref1;
+        if (this.flags & (this.groups | this.expand)) {
+          for (_i = 0, _len = data.length; _i < _len; _i++) {
+            _ref = data[_i], privilege = _ref.privilege, group = _ref.group;
+            if (this.flags & this.groups) {
+              this.privileges[group.owner.username + '/' + group.slug] = privilege;
+            }
+            if (this.flags & this.expand) {
+              _ref1 = group.members;
+              for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+                username = _ref1[_j].username;
+                this.privileges[username] = this.max(this.privileges[username], privilege);
+              }
+            }
+          }
+        }
+        if (!waiting()) {
+          return success(this.privileges, status, xhr);
+        }
+      });
+      return get(url('group-privileges', this), options);
+    };
+
+    repository.prototype.tags = function(options) {
+      return get(this.url('tags'), transform(options, {
+        '{utctimestamp}': add_dates,
+        '{size}': strip_sizes
+      }));
+    };
+
+    repository.prototype.wiki_page = function() {
+      var options, title, _arg, _i;
+      _arg = 2 <= arguments.length ? __slice.call(arguments, 0, _i = arguments.length - 1) : (_i = 0, []), options = arguments[_i++];
+      title = _arg[0];
+      return get(this.url('wiki', title), options);
+    };
+
+    return repository;
+
+  })();
+
+  _ref = ['component', 'milestone', 'version'];
+  _fn = function() {
+    var all, one, prototype;
+    one = category;
+    all = category + 's';
+    prototype = bitbucket.repository.prototype;
+    prototype['create_' + one] = function(name, options) {
+      return post(this.url('issues', all), {
+        name: name
+      }, options);
+    };
+    prototype['update_' + one] = function(id, name, options) {
+      return put(this.url('issues', all, id), {
+        name: name
+      }, options);
+    };
+    prototype['delete_' + one] = function(id, options) {
+      return del(this.url('issues', all, id), options);
+    };
+    prototype[one] = function(id, options) {
+      return get(this.url('issues', all, id), options);
+    };
+    return prototype[all] = function(options) {
+      return get(this.url('issues', all), options);
+    };
+  };
+  for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+    category = _ref[_i];
+    _fn();
+  }
+
+  bitbucket.send_invitation = function(address, access, repository, options) {
+    var invitation_url, slug, username, _ref1;
+    _ref1 = repository.toString().split('/'), username = _ref1[0], slug = _ref1[1];
+    invitation_url = url('invitations', username, slug, address);
+    return post(invitation_url, {
+      permission: access
+    }, add_dates('utc_sent_on', transform_repository(options, 'repository.%')));
+  };
+
+  bitbucket.user = (function() {
+
+    user.name = 'user';
+
+    user.create = function(attrs, options) {
+      var username;
+      username = attrs.username;
+      if (!username) {
+        throw bitbucket.error('"username" is a required attribute');
+      }
+      post(url('newuser'), attrs, options);
+      return user(username);
+    };
+
+    function user(username) {
+      if (!(this instanceof user)) {
+        return new user(username);
+      }
+      this.username = username;
+    }
+
+    user.prototype.url = function() {
+      var components;
+      components = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+      return url.apply(null, ['users', this.username].concat(__slice.call(components)));
+    };
+
+    user.prototype.details = function(options) {
+      return get(this.url(), select('user', options));
+    };
+
+    user.prototype.events = function() {
+      var options, params, _arg, _j;
+      _arg = 2 <= arguments.length ? __slice.call(arguments, 0, _j = arguments.length - 1) : (_j = 0, []), options = arguments[_j++];
+      params = _arg[0];
+      return get(this.url('events') + query(params), transform(options, {
+        'events.[utc_created_on:date]': add_dates
+      }));
+    };
+
+    user.prototype.followers = function(options) {
+      return get(this.url('followers'), select('followers', options));
+    };
+
+    user.prototype.privileges = function(flags, options) {
+      var counter, ctx, error, replied, success, waiting;
+      if (options == null) {
+        options = flags;
+        flags = 0x3;
+      }
+      options = to_options(options);
+      success = options.success || function() {};
+      error = options.error || function() {};
+      ctx = privileges_context(flags);
+      counter = 2;
+      waiting = function() {
+        return --counter > 0;
+      };
+      replied = false;
+      options.error = function(xhr, status, text) {
+        if (!replied) {
+          error(xhr, status, text);
+          return replied = true;
+        }
+      };
+      options.success = bind(ctx, function(data, status, xhr) {
+        var privilege, repo, user, _base, _j, _len1, _ref1;
+        if (this.flags & this.direct) {
+          for (_j = 0, _len1 = data.length; _j < _len1; _j++) {
+            _ref1 = data[_j], privilege = _ref1.privilege, repo = _ref1.repo, user = _ref1.user;
+            repo = (_base = this.privileges)[repo] || (_base[repo] = {});
+            repo[user.username] = this.max(repo[user.username], privilege);
+          }
+        }
+        if (!waiting()) {
+          return success(this.privileges, status, xhr);
+        }
+      });
+      get(url('privileges', this.username), options);
+      options.success = bind(ctx, function(data, status, xhr) {
+        var group, privilege, repo, username, _base, _j, _k, _len1, _len2, _ref1, _ref2;
+        if (this.flags & (this.groups | this.expand)) {
+          for (_j = 0, _len1 = data.length; _j < _len1; _j++) {
+            _ref1 = data[_j], privilege = _ref1.privilege, repo = _ref1.repo, group = _ref1.group;
+            repo = (_base = this.privileges)[repo] || (_base[repo] = {});
+            if (this.flags & this.groups) {
+              repo[group.owner.username + '/' + group.slug] = privilege;
+            }
+            if (this.flags & this.expand) {
+              _ref2 = group.members;
+              for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
+                username = _ref2[_k].username;
+                repo[username] = this.max(repo[username], privilege);
+              }
+            }
+          }
+        }
+        if (!waiting()) {
+          return success(this.privileges, status, xhr);
+        }
+      });
+      return get(url('group-privileges', this.username), options);
+    };
+
+    user.prototype.repositories = function(options) {
+      return get(this.url(), select('repositories', transform_repository(options, '[%]')));
+    };
+
+    return user;
+
+  })();
+
+  bitbucket.utils = {
+    alphabetical: alphabetical
+  };
+
+  window.bitbucket = bitbucket;
+
+}).call(this);
+
 /*! jQuery v1.10.1 | (c) 2005, 2013 jQuery Foundation, Inc. | jquery.org/license
 //@ sourceMappingURL=jquery-1.10.1.min.map
 */
@@ -1423,5 +2255,17 @@ $(document).ready(function() {
   }
 
   $(".subHeading .message").fadeIn();
-  
+
+
+  $( ".dateCircle" ).mouseover(function() {
+    var text = $(this).attr("data-tooltip");
+    $(this).closest(".cardContainer").find(".overlay").addClass("darken");
+    $(this).closest(".cardContainer").find(".overlaytext").text(text);
+  });
+
+  $( ".dateCircle" ).mouseout(function() {
+    $(this).closest(".cardContainer").find(".overlay").removeClass("darken");
+    $(this).closest(".cardContainer").find(".overlaytext").text("");
+  });
+
 });

@@ -3,6 +3,7 @@ $text-white: rgba(255,255,255,0.9);
 $orange-red: #f04f00;
 $green: #97cc18;
 $blue: #7ebcf0;
+$blue-hover: #5394cb;
 
 
 
@@ -90,15 +91,44 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
   box-sizing: border-box;
   position: relative;
   margin-right: 1%;
+  margin-bottom: 1%;
   float: left;
   box-shadow: 0px 1px 4px rgba(0,0,0,0.3);
+  min-height: 400px;
 
   .screenshotContainer {
     position: relative;
     overflow: hidden;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
-    height: 200px;
+    height: 170px;
+
+    .overlay {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      bottom: 0px;
+      right: 0px;
+      z-index:3;
+      background: rgba(0,0,0,0.1);
+      transition: 0.2s;
+
+      .overlaytext {
+        text-align: center;
+        margin-top: 70px;
+        color: #fff;
+        font-family: "Open Sans",sans-serif;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 17px;
+      }
+    }
+
+    .overlay.darken {
+      background: rgba(0,0,0,0.7);
+    }
+
 
     .screenshot {
       width: 100%;
@@ -110,6 +140,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
 
   .entry-content {
     padding: 2em;
+    padding-top: 2.5em;
     position: relative;
   }
 
@@ -122,16 +153,17 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
 
   .description {
     font-size: 12px;
+    width: 75%;
   }
 
-  .dateCircle {
-    display: none;
+  a.dateCircle:link, a.dateCircle:visited {
+    display: block;
     font-family: "Open Sans";
     position: absolute;
-    top: 160px;
-    left: 40%;
-    width: 70px;
-    height: 70px;
+    top: 130px;
+    left: 39%;
+    width: 77px;
+    height: 77px;
     border-radius: 4em;
     border: 6px solid #fff;
     background: $blue;
@@ -141,15 +173,81 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
     text-align: center;
     text-transform: uppercase;
     font-size: 13px;
-    padding-top: 9px;
+    padding: 1.1em;
+    transition: 0.2s;
 
-    span {
-      display: block;
-      font-weight: bold;
-      margin-top: -8px;
-      font-size: 20px;
+    svg {
+      transition: 0.2s;
+      margin-top: -1px;
+
+      path, circle {
+        fill: #fff;
+      }
+
 
     }
+
+    svg.ftp {
+
+      margin-top: -1px;
+
+      path, circle {
+        fill: rgba(255,255,255,0.8);
+      }
+
+
+    }
+
+
+  }
+
+  a.dateCircle:hover {
+      background: $orange-red;
+
+      svg {
+
+        margin-top: -1px;
+
+        path, circle {
+          fill: rgba(255,255,255,0.8);
+        }
+      }
+
+      svg.stash {
+        transform: rotate(180deg);
+
+
+        path, circle {
+          fill: rgba(255,255,255,0.8);
+        }
+      }
+
+      svg.ftp {
+        transform: matrix(1, -0.2, 0, 1, 0, 0);
+
+
+        path, circle {
+          fill: rgba(255,255,255,0.8);
+        }
+      }
+
+      svg.bitbucket {
+        transform: scale(1.2);
+
+
+        path, circle {
+          fill: rgba(255,255,255,0.8);
+        }
+      }
+
+      svg.github {
+        transform: translate(2px,0px) rotate(10deg);
+
+
+        path, circle {
+          fill: rgba(255,255,255,0.8);
+        }
+      }
   }
 
   .hashLabel {
