@@ -4,7 +4,8 @@
 
 				<div id="inner-content" class="cf">
 
-						<div id="main" class="m-all cf" role="main">
+
+						<div id="main" class="m-all cf isotope" role="main">
 
 								<?php
 	require_once(__DIR__ . '/client/GitHubClient.php'); ?>
@@ -156,7 +157,7 @@
 
 			<div class="entry-content">
 
-			<h2><a href="<?php the_permalink(); ?>" data-tooltip="View Details"><?php the_title(); ?></a></h2>
+			<h2><a href="<?php the_permalink(); ?>" data-tooltip="View Details" class="name"><?php the_title(); ?></a></h2>
 
 
 
