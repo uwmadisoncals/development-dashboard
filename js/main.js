@@ -83,10 +83,37 @@ function pingSite(siteurl,obj) {
       statusCode: {
         404: function() {
           //alert( "page not found" );
-          $(obj).find(".responseContainerStatus").text("ruh roh!");
+          $(obj).find(".responseContainerStatus").show();
+          $(obj).find(".responseContainer").addClass("problem");
+          $(obj).find(".responseContainerStatus").text("Error 404");
+        },
+        500: function() {
+          //alert( "page not found" );
+          $(obj).find(".responseContainerStatus").show();
+          $(obj).find(".responseContainer").addClass("problem");
+          $(obj).find(".responseContainerStatus").text("Database Error 500");
+        },
+        206: function() {
+          //alert( "page not found" );
+          $(obj).find(".responseContainerStatus").show();
+          $(obj).find(".responseContainer").addClass("warning");
+          $(obj).find(".responseContainerStatus").text("Partial Error 206");
+        },
+        401: function() {
+          //alert( "page not found" );
+          $(obj).find(".responseContainerStatus").show();
+          $(obj).find(".responseContainer").addClass("problem");
+          $(obj).find(".responseContainerStatus").text("Unauthorized Error 401");
+        },
+        403: function() {
+          //alert( "page not found" );
+          $(obj).find(".responseContainerStatus").show();
+          $(obj).find(".responseContainer").addClass("problem");
+          $(obj).find(".responseContainerStatus").text("Forbidden Error 403");
         },
         200: function() {
           //alert("pagefound");
+          $(obj).find(".responseContainerStatus").hide();
           $(obj).find(".responseContainerStatus").text("All is well.");
         }
       },
