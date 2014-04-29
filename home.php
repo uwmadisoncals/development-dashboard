@@ -4,6 +4,11 @@
 
 				<div id="inner-content" class="cf">
 
+						<div class="sortingOptions">
+							<a href="#" data-sorttype="responseTime">Response Time</a>
+							<a href="#" data-sorttype="name" class="selected">Name</a>
+							<a href="#" data-sorttype="server">Server</a>
+						</div>
 
 						<div id="main" class="m-all cf isotope" role="main">
 
@@ -13,7 +18,7 @@
 
 
 
-	<?php $args = array( 'post_type' => 'projects', 'posts_per_page' => 100, 'orderby' => 'title', 'order' => 'ASC' );
+	<?php $args = array( 'post_type' => 'projects', 'posts_per_page' => 100 );
 				$loop = new WP_Query( $args );
 				while ( $loop->have_posts() ) : $loop->the_post(); ?>
 

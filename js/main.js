@@ -1,27 +1,70 @@
 $(document).ready(function() {
 
 
-  var $container = $('#main');
-  // init
-  $container.isotope({
-    // options
-    itemSelector: '.cardContainer',
-    layoutMode: 'fitRows',
+  $('#main').isotope({
+    masonry: {
+
+    },
     getSortData: {
       name: '.name',
-      speed: '.responseContainerData parseInt'
+      number: '.responseContainerData parseInt'
+    },
+    sortBy: 'name'
+  });
+
+  function sortItems() {
+    if(sortType == "name") {
+
+      $('#main').isotope({
+        sortBy: 'name'
+      });
+      $('#main').isotope('updateSortData').isotope();
+    } else if(sortType == "server") {
+      $('#main').isotope({
+        sortBy: 'name'
+      });
+      $('#main').isotope('updateSortData').isotope();
+    } else {
+
+      $('#main').isotope({
+      sortBy: 'number'
+      });
+      $('#main').isotope('updateSortData').isotope();
 
     }
+  }
 
+  var storedSortType = localStorage.getItem("sortedby");
+
+  if(storedSortType) {
+    var sortType = storedSortType;
+    $(".sortingOptions a").removeClass("selected");
+    $(".sortingOptions a").each(function() {
+      var currentSort = $(this).attr("data-sorttype");
+      if(currentSort == sortType) {
+        $(this).addClass("selected");
+        sortItems();
+      }
+    });
+  } else {
+    var sortType = "name";
+    sortItems();
+  }
+
+
+
+  $(".sortingOptions a").click(function() {
+    $(".sortingOptions a").removeClass("selected");
+    $(this).addClass("selected");
+    sortType = $(this).attr("data-sorttype");
+    localStorage.setItem("sortedby", sortType);
+    sortItems();
+    return false;
   });
 
 
 
-  setInterval(function() {
-    //var sortValue = $(".cardContainer").attr("data-responsetime");
-    $container.isotope({ sortBy: "speed" });
 
-  },1000);
 
   var randMessage = Math.floor((Math.random()*5)+1);
 
@@ -56,31 +99,27 @@ $(document).ready(function() {
     }
   });
 
-
+var cl = 0;
+var firstrun = true;
 
 $( ".cardContainer" ).each(function( index ) {
+
   var siteurl = "http://" + $(this).attr("data-siteurl");
   var screenshoturl = "http://api.thumbalizr.com/?url=http://" + $(this).attr("data-siteurl") + "&width=350";
 
-
-    /*$.get( screenshoturl, function( data ) {
-      $(this).find(".entry-content").html( data );
-    });*/
-
-
   //get response times
   pingSite(siteurl,this);
-  setInterval(function() {
 
-  /*html2canvas(document.body, {
-  onrendered: function(canvas) {
-    document.body.appendChild(canvas);
-  }
-});*/
 
-    pingSite(siteurl,this);
-  },10000);
 });
+
+setInterval(function() {
+$( ".cardContainer" ).each(function( index ) {
+    var siteurl = "http://" + $(this).attr("data-siteurl");
+    var screenshoturl = "http://api.thumbalizr.com/?url=http://" + $(this).attr("data-siteurl") + "&width=350";
+    pingSite(siteurl,this);
+});
+},10000);
 
 function pingSite(siteurl,obj) {
   var sendDate = (new Date()).getTime();
@@ -131,7 +170,7 @@ function pingSite(siteurl,obj) {
           var receiveDate = (new Date()).getTime();
 
           var responseTimeMs = receiveDate - sendDate;
-          var responseTimeMsName = receiveDate - sendDate + "ms";
+          var responseTimeMsName = responseTimeMs + "ms";
 
           $(obj).closest(".cardContainer").attr("data-responsetime",responseTimeMs);
 
@@ -139,11 +178,29 @@ function pingSite(siteurl,obj) {
               $(obj).find(".responseContainer").addClass("warning");
           } else if(responseTimeMs >= 300) {
               $(obj).find(".responseContainer").addClass("problem");
+          } else {
+            $(obj).find(".responseContainer").removeClass("problem");
+            $(obj).find(".responseContainer").removeClass("warning");
           }
           //console.log(responseTimeMs);
           $(obj).find(".responseContainerData").text(responseTimeMsName);
           //console.log(responseTimeMs);
 
+          cl = cl + 1;
+          if(cl == $( ".cardContainer" ).length) {
+            //console.log("all done");
+
+          if(sortType == "responseTime") {
+
+
+            $('#main').isotope('updateSortData').isotope();
+
+
+
+          }
+
+            cl = 0;
+          }
 
 
       }
