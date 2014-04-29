@@ -85,11 +85,16 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
   }
 }
 
-.sortingOptions {
-  position: absolute;
-  top: 3em;
-  right: 3em;
-  z-index:3;
+.sortingContainer {
+
+position: absolute;
+top: 3em;
+right: 3em;
+z-index:3;
+
+.sortingOptions, .sortingOrder {
+  float: left;
+  margin-right: 1em;
 
   a {
     display: block;
@@ -126,6 +131,8 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
     color: #d5a16c;
     font-weight: bold;
   }
+}
+
 }
 
 .cardContainer {

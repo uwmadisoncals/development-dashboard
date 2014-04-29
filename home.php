@@ -4,11 +4,19 @@
 
 				<div id="inner-content" class="cf">
 
+					<div class="sortingContainer">
 						<div class="sortingOptions">
 							<a href="#" data-sorttype="responseTime">Response Time</a>
 							<a href="#" data-sorttype="name" class="selected">Name</a>
 							<a href="#" data-sorttype="server">Server</a>
 						</div>
+
+						<div class="sortingOrder">
+							<a href="#" data-sortorder="asc" class="selected">ASC</a>
+							<a href="#" data-sortorder="desc">DESC</a>
+
+						</div>
+					</div>
 
 						<div id="main" class="m-all cf isotope" role="main">
 
@@ -163,7 +171,7 @@
 			<div class="entry-content">
 
 			<h2><a href="<?php the_permalink(); ?>" data-tooltip="View Details" class="name"><?php the_title(); ?></a></h2>
-
+			<div class="server"><?php the_field('server') ?></div>
 
 
 			<?php

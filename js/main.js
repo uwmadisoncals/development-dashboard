@@ -1,33 +1,41 @@
 $(document).ready(function() {
 
 
-  $('#main').isotope({
-    masonry: {
 
-    },
-    getSortData: {
-      name: '.name',
-      number: '.responseContainerData parseInt'
-    },
-    sortBy: 'name'
-  });
 
   function sortItems() {
+
+    $('#main').isotope({
+      masonry: {
+
+      },
+      getSortData: {
+        name: '.name',
+        server: '.server',
+        number: '.responseContainerData parseInt'
+      },
+      sortBy: 'name',
+      sortAscending: sortOrder
+    });
+
     if(sortType == "name") {
 
       $('#main').isotope({
-        sortBy: 'name'
+        sortBy: 'name',
+        sortAscending: sortOrder
       });
       $('#main').isotope('updateSortData').isotope();
     } else if(sortType == "server") {
       $('#main').isotope({
-        sortBy: 'name'
+        sortBy: 'server',
+        sortAscending: sortOrder
       });
       $('#main').isotope('updateSortData').isotope();
     } else {
 
       $('#main').isotope({
-      sortBy: 'number'
+      sortBy: 'number',
+      sortAscending: sortOrder
       });
       $('#main').isotope('updateSortData').isotope();
 
@@ -35,6 +43,9 @@ $(document).ready(function() {
   }
 
   var storedSortType = localStorage.getItem("sortedby");
+  var storedSortOrder = localStorage.getItem("sortorder");
+
+
 
   if(storedSortType) {
     var sortType = storedSortType;
@@ -43,21 +54,59 @@ $(document).ready(function() {
       var currentSort = $(this).attr("data-sorttype");
       if(currentSort == sortType) {
         $(this).addClass("selected");
-        sortItems();
+        //sortItems();
       }
     });
   } else {
     var sortType = "name";
-    sortItems();
+
   }
 
+  //console.log(storedSortOrder);
+  if(storedSortOrder != 'undefined') {
+    var sortOrderVal = storedSortOrder;
+    if(sortOrderVal == "asc") {
+      sortOrder = true;
+    } else {
+      sortOrder = false;
+    }
+    $(".sortingOrder a").removeClass("selected");
+    $(".sortingOrder a").each(function() {
+      var currentSort = $(this).attr("data-sortorder");
+      if(currentSort == sortOrderVal) {
+        $(this).addClass("selected");
+        //console.log(sortOrder);
+        //sortItems();
+      }
+    });
+  } else {
 
+    var sortOrder = true;
+
+  }
+
+  sortItems();
 
   $(".sortingOptions a").click(function() {
     $(".sortingOptions a").removeClass("selected");
     $(this).addClass("selected");
     sortType = $(this).attr("data-sorttype");
     localStorage.setItem("sortedby", sortType);
+    sortItems();
+    return false;
+  });
+
+  $(".sortingOrder a").click(function() {
+    $(".sortingOrder a").removeClass("selected");
+    $(this).addClass("selected");
+    sortOrderVal = $(this).attr("data-sortorder");
+    if(sortOrderVal == "asc") {
+      sortOrder = true;
+    } else {
+      sortOrder = false;
+    }
+    //console.log(sortOrderVal);
+    localStorage.setItem("sortorder", sortOrderVal);
     sortItems();
     return false;
   });

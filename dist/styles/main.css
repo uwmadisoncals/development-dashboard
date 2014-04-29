@@ -60,13 +60,17 @@ h1 a, .h1 a, h2 a, .h2 a, h3 a, .h3 a, h4 a, .h4 a, h5 a, .h5 a {
   color: #f04f00;
 }
 
-.sortingOptions {
+.sortingContainer {
   position: absolute;
   top: 3em;
   right: 3em;
   z-index: 3;
 }
-.sortingOptions a {
+.sortingContainer .sortingOptions, .sortingContainer .sortingOrder {
+  float: left;
+  margin-right: 1em;
+}
+.sortingContainer .sortingOptions a, .sortingContainer .sortingOrder a {
   display: block;
   float: left;
   padding: 0.5em;
@@ -79,20 +83,20 @@ h1 a, .h1 a, h2 a, .h2 a, h3 a, .h3 a, h4 a, .h4 a, h5 a, .h5 a {
   font-size: 0.9em;
   text-transform: uppercase;
 }
-.sortingOptions a:hover {
+.sortingContainer .sortingOptions a:hover, .sortingContainer .sortingOrder a:hover {
   background: rgba(255, 255, 255, 0.2);
   color: #fff;
 }
-.sortingOptions a:first-child {
+.sortingContainer .sortingOptions a:first-child, .sortingContainer .sortingOrder a:first-child {
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
 }
-.sortingOptions a:last-child {
+.sortingContainer .sortingOptions a:last-child, .sortingContainer .sortingOrder a:last-child {
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
   border-right: 1px solid rgba(255, 255, 255, 0.6);
 }
-.sortingOptions a.selected {
+.sortingContainer .sortingOptions a.selected, .sortingContainer .sortingOrder a.selected {
   background: rgba(255, 255, 255, 0.8);
   color: #d5a16c;
   font-weight: bold;
