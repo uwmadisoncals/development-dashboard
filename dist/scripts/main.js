@@ -4482,7 +4482,7 @@ $( ".cardContainer" ).each(function( index ) {
                   var series = this.series[0];
                   setInterval(function() {
                       var x = (new Date()).getTime(), // current time
-                          y = Math.random();
+                          //y = Math.random();
                           y = parseInt($(".cardContainer").attr("data-responsetime"), 10);
                       series.addPoint([x, y], true, true);
                   }, frequencyVal);
