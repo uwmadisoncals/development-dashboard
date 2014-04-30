@@ -1,7 +1,8 @@
 $(document).ready(function() {
 
 
-
+var frequencyVal = 30000;
+var frequencyInterval;
 
   function sortItems() {
 
@@ -44,7 +45,43 @@ $(document).ready(function() {
 
   var storedSortType = localStorage.getItem("sortedby");
   var storedSortOrder = localStorage.getItem("sortorder");
+  var responseFrequency = localStorage.getItem("frequency");
 
+
+  if(responseFrequency) {
+    frequencyVal = responseFrequency;
+
+    clearInterval(frequencyInterval);
+    frequencyInterval = setInterval(function() {
+      //console.log(frequencyVal);
+    $( ".cardContainer" ).each(function( index ) {
+        var siteurl = "http://" + $(this).attr("data-siteurl");
+        var screenshoturl = "http://api.thumbalizr.com/?url=http://" + $(this).attr("data-siteurl") + "&width=350";
+        pingSite(siteurl,this);
+    });
+    }, frequencyVal);
+
+    $(".responseFrequency a").removeClass("selected");
+    $(".responseFrequency a").each(function() {
+      var currentSort = $(this).attr("data-frequency");
+
+      if(currentSort == frequencyVal) {
+        $(this).addClass("selected");
+        //sortItems();
+      }
+    });
+  } else {
+    var frequencyVal = 30000;
+    clearInterval(frequencyInterval);
+    frequencyInterval = setInterval(function() {
+      //console.log(frequencyVal);
+    $( ".cardContainer" ).each(function( index ) {
+        var siteurl = "http://" + $(this).attr("data-siteurl");
+        var screenshoturl = "http://api.thumbalizr.com/?url=http://" + $(this).attr("data-siteurl") + "&width=350";
+        pingSite(siteurl,this);
+    });
+    }, frequencyVal);
+  }
 
 
   if(storedSortType) {
@@ -52,6 +89,13 @@ $(document).ready(function() {
     $(".sortingOptions a").removeClass("selected");
     $(".sortingOptions a").each(function() {
       var currentSort = $(this).attr("data-sorttype");
+
+      if(sortType == "responseTime") {
+          $(".responseFrequency").show();
+      } else {
+          $(".responseFrequency").hide();
+      }
+
       if(currentSort == sortType) {
         $(this).addClass("selected");
         //sortItems();
@@ -59,11 +103,11 @@ $(document).ready(function() {
     });
   } else {
     var sortType = "name";
-
+    $(".responseFrequency").hide();
   }
 
   //console.log(storedSortOrder);
-  if(storedSortOrder != 'undefined') {
+  if(storedSortOrder) {
     var sortOrderVal = storedSortOrder;
     if(sortOrderVal == "asc") {
       sortOrder = true;
@@ -91,6 +135,13 @@ $(document).ready(function() {
     $(".sortingOptions a").removeClass("selected");
     $(this).addClass("selected");
     sortType = $(this).attr("data-sorttype");
+
+    if(sortType == "responseTime") {
+      $(".responseFrequency").show();
+    } else {
+      $(".responseFrequency").hide();
+    }
+
     localStorage.setItem("sortedby", sortType);
     sortItems();
     return false;
@@ -108,6 +159,27 @@ $(document).ready(function() {
     //console.log(sortOrderVal);
     localStorage.setItem("sortorder", sortOrderVal);
     sortItems();
+    return false;
+  });
+
+  $(".responseFrequency a").click(function() {
+    $(".responseFrequency a").removeClass("selected");
+    $(this).addClass("selected");
+    frequencyVal = $(this).attr("data-frequency");
+    //console.log(sortOrderVal);
+    clearInterval(frequencyInterval);
+    frequencyInterval = setInterval(function() {
+      //console.log(frequencyVal);
+    $( ".cardContainer" ).each(function( index ) {
+        var siteurl = "http://" + $(this).attr("data-siteurl");
+        var screenshoturl = "http://api.thumbalizr.com/?url=http://" + $(this).attr("data-siteurl") + "&width=350";
+        pingSite(siteurl,this);
+    });
+    }, frequencyVal);
+
+
+    localStorage.setItem("frequency", frequencyVal);
+    //sortItems();
     return false;
   });
 
@@ -162,13 +234,6 @@ $( ".cardContainer" ).each(function( index ) {
 
 });
 
-setInterval(function() {
-$( ".cardContainer" ).each(function( index ) {
-    var siteurl = "http://" + $(this).attr("data-siteurl");
-    var screenshoturl = "http://api.thumbalizr.com/?url=http://" + $(this).attr("data-siteurl") + "&width=350";
-    pingSite(siteurl,this);
-});
-},10000);
 
 function pingSite(siteurl,obj) {
   var sendDate = (new Date()).getTime();

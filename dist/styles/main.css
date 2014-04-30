@@ -60,17 +60,32 @@ h1 a, .h1 a, h2 a, .h2 a, h3 a, .h3 a, h4 a, .h4 a, h5 a, .h5 a {
   color: #f04f00;
 }
 
+#content {
+  margin-top: 3em;
+}
+
 .sortingContainer {
   position: absolute;
   top: 3em;
   right: 3em;
   z-index: 3;
+  width: 40%;
 }
-.sortingContainer .sortingOptions, .sortingContainer .sortingOrder {
-  float: left;
+.sortingContainer .sortingOptions, .sortingContainer .sortingOrder, .sortingContainer .responseFrequency {
+  float: right;
   margin-right: 1em;
+  margin-bottom: 1em;
 }
-.sortingContainer .sortingOptions a, .sortingContainer .sortingOrder a {
+.sortingContainer .sortingOptions .label, .sortingContainer .sortingOrder .label, .sortingContainer .responseFrequency .label {
+  float: left;
+  margin-right: 0.4em;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 0.5em;
+}
+.sortingContainer .sortingOptions .optionsContainer, .sortingContainer .sortingOrder .optionsContainer, .sortingContainer .responseFrequency .optionsContainer {
+  float: left;
+}
+.sortingContainer .sortingOptions .optionsContainer a, .sortingContainer .sortingOrder .optionsContainer a, .sortingContainer .responseFrequency .optionsContainer a {
   display: block;
   float: left;
   padding: 0.5em;
@@ -83,20 +98,20 @@ h1 a, .h1 a, h2 a, .h2 a, h3 a, .h3 a, h4 a, .h4 a, h5 a, .h5 a {
   font-size: 0.9em;
   text-transform: uppercase;
 }
-.sortingContainer .sortingOptions a:hover, .sortingContainer .sortingOrder a:hover {
+.sortingContainer .sortingOptions .optionsContainer a:hover, .sortingContainer .sortingOrder .optionsContainer a:hover, .sortingContainer .responseFrequency .optionsContainer a:hover {
   background: rgba(255, 255, 255, 0.2);
   color: #fff;
 }
-.sortingContainer .sortingOptions a:first-child, .sortingContainer .sortingOrder a:first-child {
+.sortingContainer .sortingOptions .optionsContainer a:first-child, .sortingContainer .sortingOrder .optionsContainer a:first-child, .sortingContainer .responseFrequency .optionsContainer a:first-child {
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
 }
-.sortingContainer .sortingOptions a:last-child, .sortingContainer .sortingOrder a:last-child {
+.sortingContainer .sortingOptions .optionsContainer a:last-child, .sortingContainer .sortingOrder .optionsContainer a:last-child, .sortingContainer .responseFrequency .optionsContainer a:last-child {
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
   border-right: 1px solid rgba(255, 255, 255, 0.6);
 }
-.sortingContainer .sortingOptions a.selected, .sortingContainer .sortingOrder a.selected {
+.sortingContainer .sortingOptions .optionsContainer a.selected, .sortingContainer .sortingOrder .optionsContainer a.selected, .sortingContainer .responseFrequency .optionsContainer a.selected {
   background: rgba(255, 255, 255, 0.8);
   color: #d5a16c;
   font-weight: bold;

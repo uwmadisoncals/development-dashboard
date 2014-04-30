@@ -5,16 +5,31 @@
 				<div id="inner-content" class="cf">
 
 					<div class="sortingContainer">
+
+
+
 						<div class="sortingOptions">
-							<a href="#" data-sorttype="responseTime">Response Time</a>
-							<a href="#" data-sorttype="name" class="selected">Name</a>
-							<a href="#" data-sorttype="server">Server</a>
+							<div class="optionsContainer">
+								<a href="#" data-sorttype="responseTime">Response Time</a>
+								<a href="#" data-sorttype="name" class="selected">Name</a>
+								<a href="#" data-sorttype="server">Server</a>
+							</div>
 						</div>
 
 						<div class="sortingOrder">
-							<a href="#" data-sortorder="asc" class="selected">ASC</a>
-							<a href="#" data-sortorder="desc">DESC</a>
+							<div class="optionsContainer">
+								<a href="#" data-sortorder="asc" class="selected">ASC</a>
+								<a href="#" data-sortorder="desc">DESC</a>
+							</div>
+						</div>
 
+						<div class="responseFrequency">
+							<div class="label">Check Sites Every</div>
+							<div class="optionsContainer">
+								<a href="#" data-frequency="30000">30 sec</a>
+								<a href="#" data-frequency="180000" class="selected">3 min</a>
+								<a href="#" data-frequency="600000">10 min</a>
+							</div>
 						</div>
 					</div>
 
