@@ -173,6 +173,15 @@ width: 40%;
     height: 170px;
     width: 100%;
 
+    .chart {
+      display: none;
+
+      height: 165px;
+      margin-top: -65px;
+
+
+    }
+
     .overlay {
       position: absolute;
       top: 0px;
@@ -252,7 +261,7 @@ width: 40%;
     display: block;
     font-family: "Open Sans";
     position: absolute;
-    top: 130px;
+    top: 132px;
     left: 39%;
     width: 77px;
     height: 77px;

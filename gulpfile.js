@@ -31,7 +31,7 @@ gulp.task('styles', function() {
 
 // Scripts
 gulp.task('scripts', function() {
-  return gulp.src(['js/jquery.js','js/isotope.js','js/main.js'])
+  return gulp.src(['js/jquery.js','js/isotope.js','js/hicharts.js','exporting.js','js/main.js'])
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'))
     .pipe(concat('main.js'))

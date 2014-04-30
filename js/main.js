@@ -1,6 +1,36 @@
 $(document).ready(function() {
 
 
+
+
+        Highcharts.setOptions({
+            global: {
+                useUTC: false
+            }
+        });
+
+        //var chart;
+
+
+
+
+var randMessage = Math.floor((Math.random()*5)+1);
+
+if(randMessage == 1) {
+  $(".subHeading .message").text("I miss my trapper keeper.");
+} else if(randMessage == 2) {
+  $(".subHeading .message").text("I knew there was something I had to do...");
+} else if(randMessage == 3) {
+  $(".subHeading .message").text("Short term memory?");
+} else if(randMessage == 4) {
+  $(".subHeading .message").text("Just imagine how much you would get done if IE didn't exist.");
+}
+
+setTimeout(function() {
+$(".subHeading .message").fadeIn();
+},1000);
+
+
 var frequencyVal = 30000;
 var frequencyInterval;
 
@@ -187,19 +217,7 @@ var frequencyInterval;
 
 
 
-  var randMessage = Math.floor((Math.random()*5)+1);
 
-  if(randMessage == 1) {
-    $(".subHeading .message").text("I miss my trapper keeper.");
-  } else if(randMessage == 2) {
-    $(".subHeading .message").text("I knew there was something I had to do...");
-  } else if(randMessage == 3) {
-    $(".subHeading .message").text("Short term memory?");
-  } else if(randMessage == 4) {
-    $(".subHeading .message").text("Just imagine how much you would get done if IE didn't exist.");
-  }
-
-  $(".subHeading .message").fadeIn();
 
 
   $( "a" ).mouseover(function() {
@@ -220,6 +238,22 @@ var frequencyInterval;
     }
   });
 
+  $( ".responseContainer" ).mouseover(function() {
+    $(this).closest(".cardContainer").find(".chart").show();
+    $(this).closest(".cardContainer").find(".screenshot").addClass("blur");
+    $(this).closest(".cardContainer").find(".overlay").addClass("darken");
+    return false;
+  });
+
+  $( ".responseContainer" ).mouseout(function() {
+    $(this).closest(".cardContainer").find(".chart").hide();
+    $(this).closest(".cardContainer").find(".screenshot").removeClass("blur");
+    $(this).closest(".cardContainer").find(".overlay").removeClass("darken");
+    return false;
+  });
+
+
+
 var cl = 0;
 var firstrun = true;
 
@@ -230,6 +264,88 @@ $( ".cardContainer" ).each(function( index ) {
 
   //get response times
   pingSite(siteurl,this);
+
+
+
+  $(this).find('.chart').highcharts({
+      chart: {
+          type: 'spline',
+          animation: Highcharts.svg, // don't animate in old IE
+          marginRight: 0,
+          backgroundColor:'rgba(255, 255, 255, 0.0)',
+          height: 155,
+          width: 305,
+          events: {
+              load: function() {
+                  // set up the updating of the chart each second
+                  var series = this.series[0];
+                  setInterval(function() {
+                      var x = (new Date()).getTime(), // current time
+                          //y = Math.random();
+                          y = parseInt($(".cardContainer").attr("data-responsetime"), 10);
+                      series.addPoint([x, y], true, true);
+                  }, frequencyVal);
+              }
+          }
+      },
+
+      title: {
+          text: '',
+          color: '#FFFFFF'
+      },
+      xAxis: {
+          type: 'datetime',
+          tickPixelInterval: 150,
+          color: '#FFFFFF'
+      },
+      yAxis: {
+          title: {
+              text: '',
+              color: '#FFFFFF'
+          },
+          plotLines: [{
+              value: 0,
+              width: 1,
+              color: '#FFFFFF'
+
+          }]
+      },
+      tooltip: {
+          formatter: function() {
+                  return '<b>'+ this.series.name +'</b><br/>'+
+                  Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) +'<br/>'+
+                  Highcharts.numberFormat(this.y, 2);
+          }
+      },
+      plotOptions: {
+        series: {
+            color: '#FFFFFF'
+        }
+      },
+      legend: {
+          enabled: false
+      },
+      exporting: {
+          enabled: false
+      },
+      series: [{
+          name: 'Random data',
+          data: (function() {
+              // generate an array of random data
+              var data = [],
+                  time = (new Date()).getTime(),
+                  i;
+
+              for (i = -19; i <= 0; i++) {
+                  data.push({
+                      x: time + i * 1000,
+                      y: Math.random()
+                  });
+              }
+              return data;
+          })()
+      }]
+  });
 
 
 });

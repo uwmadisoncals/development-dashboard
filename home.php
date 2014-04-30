@@ -7,7 +7,6 @@
 					<div class="sortingContainer">
 
 
-
 						<div class="sortingOptions">
 							<div class="optionsContainer">
 								<a href="#" data-sorttype="responseTime">Response Time</a>
@@ -53,12 +52,15 @@
 					$image = wp_get_attachment_image_src($attachment_id, $size);
 
 
-					echo "<div class='screenshotContainer'><div class='overlay'><div class='overlaytext'></div></div><img class='screenshot' src='".$image[0]."' alt=' ' ></div>";
+					echo "<div class='screenshotContainer'><div class='overlay'><div class='overlaytext'></div><div class='chart'></div></div><img class='screenshot' src='".$image[0]."' alt=' ' ></div>";
 				else:
-					echo "<div class='screenshotContainer'><div class='overlay'><div class='overlaytext'></div></div><img class='screenshot' src='http://immediatenet.com/t/l3?Size=1280x1024&URL=http://".get_field('site_url')."' alt=' ' ></div>";
+					echo "<div class='screenshotContainer'><div class='overlay'><div class='overlaytext'></div><div class='chart'></div></div><img class='screenshot' src='http://immediatenet.com/t/l3?Size=1280x1024&URL=http://".get_field('site_url')."' alt=' ' ></div>";
 					//echo "<div class='screenshotContainer'><div class='overlay'><div class='overlaytext'></div></div><img class='screenshot' src='http://api.thumbalizr.com/?url=http://".get_field('site_url')."&width=350' alt=' ' ></div>";
 				endif;
+
+
 			?>
+
 
 
 
@@ -275,6 +277,7 @@
 				</div>
 
 			</div>
+
 
 
 <?php get_footer(); ?>

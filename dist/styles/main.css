@@ -140,6 +140,11 @@ h1 a, .h1 a, h2 a, .h2 a, h3 a, .h3 a, h4 a, .h4 a, h5 a, .h5 a {
   height: 170px;
   width: 100%;
 }
+.cardContainer .screenshotContainer .chart {
+  display: none;
+  height: 165px;
+  margin-top: -65px;
+}
 .cardContainer .screenshotContainer .overlay {
   position: absolute;
   top: 0px;
@@ -204,7 +209,7 @@ h1 a, .h1 a, h2 a, .h2 a, h3 a, .h3 a, h4 a, .h4 a, h5 a, .h5 a {
   display: block;
   font-family: "Open Sans";
   position: absolute;
-  top: 130px;
+  top: 132px;
   left: 39%;
   width: 77px;
   height: 77px;
