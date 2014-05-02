@@ -25,7 +25,7 @@
 						<div class="responseFrequency">
 							<div class="label">Check Sites Every</div>
 							<div class="optionsContainer">
-								<a href="#" data-frequency="15000">15 sec</a>
+								<a href="#" data-frequency="20000">20 sec</a>
 								<a href="#" data-frequency="180000" class="selected">3 min</a>
 								<a href="#" data-frequency="600000">10 min</a>
 							</div>
