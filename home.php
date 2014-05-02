@@ -25,14 +25,14 @@
 						<div class="responseFrequency">
 							<div class="label">Check Sites Every</div>
 							<div class="optionsContainer">
-								<a href="#" data-frequency="30000">30 sec</a>
+								<a href="#" data-frequency="15000">15 sec</a>
 								<a href="#" data-frequency="180000" class="selected">3 min</a>
 								<a href="#" data-frequency="600000">10 min</a>
 							</div>
 						</div>
 					</div>
 
-						<div id="main" class="m-all cf isotope" role="main">
+						<div id="main" class="primaryHome m-all cf isotope" role="main">
 
 								<?php
 	require_once(__DIR__ . '/client/GitHubClient.php'); ?>

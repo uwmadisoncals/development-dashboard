@@ -4237,7 +4237,7 @@ var frequencyInterval;
 
   function sortItems() {
 
-    $('#main').isotope({
+    $('.primaryHome').isotope({
       masonry: {
 
       },
@@ -4252,24 +4252,24 @@ var frequencyInterval;
 
     if(sortType == "name") {
 
-      $('#main').isotope({
+      $('.primaryHome').isotope({
         sortBy: 'name',
         sortAscending: sortOrder
       });
-      $('#main').isotope('updateSortData').isotope();
+      $('.primaryHome').isotope('updateSortData').isotope();
     } else if(sortType == "server") {
-      $('#main').isotope({
+      $('.primaryHome').isotope({
         sortBy: 'server',
         sortAscending: sortOrder
       });
-      $('#main').isotope('updateSortData').isotope();
+      $('.primaryHome').isotope('updateSortData').isotope();
     } else {
 
-      $('#main').isotope({
+      $('.primaryHome').isotope({
       sortBy: 'number',
       sortAscending: sortOrder
       });
-      $('#main').isotope('updateSortData').isotope();
+      $('.primaryHome').isotope('updateSortData').isotope();
 
     }
   }
@@ -4466,7 +4466,7 @@ $( ".cardContainer" ).each(function( index ) {
   //get response times
   pingSite(siteurl,this);
 
-
+  var currentObj = $(this);
 
   $(this).find('.chart').highcharts({
       chart: {
@@ -4483,7 +4483,9 @@ $( ".cardContainer" ).each(function( index ) {
                   setInterval(function() {
                       var x = (new Date()).getTime(), // current time
                           //y = Math.random();
-                          y = parseInt($(".cardContainer").attr("data-responsetime"), 10);
+                          //y = parseInt($(this).closest(".cardContainer").attr("data-responsetime"), 10);
+                          y = parseInt($(currentObj).attr("data-responsetime"), 10);
+                          //console.log(test);
                       series.addPoint([x, y], true, true);
                   }, frequencyVal);
               }
@@ -4537,10 +4539,10 @@ $( ".cardContainer" ).each(function( index ) {
                   time = (new Date()).getTime(),
                   i;
 
-              for (i = -19; i <= 0; i++) {
+              for (i = -10; i <= 0; i++) {
                   data.push({
                       x: time + i * 1000,
-                      y: Math.random()
+                      y: Math.floor(Math.random()*(80-35+1)+35)
                   });
               }
               return data;
@@ -4624,7 +4626,7 @@ function pingSite(siteurl,obj) {
           if(sortType == "responseTime") {
 
 
-            $('#main').isotope('updateSortData').isotope();
+            $('.primaryHome').isotope('updateSortData').isotope();
 
 
 
