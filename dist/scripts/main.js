@@ -4202,7 +4202,31 @@ hasBidiBug:Nb,isTouchDevice:Jb,numberFormat:Ga,seriesTypes:F,setOptions:function
 $(document).ready(function() {
 
 
+$( "a.details" ).click(function() {
 
+  var url = $(this).attr("href");
+  url = url + " #ajaxload";
+
+$(".contentContainer").show();
+  $( ".contentContainerContent" ).load( url, function() {
+      $(".contentContainer").addClass("show");
+      $("#container").addClass("blur");
+
+  });
+
+  return false;
+});
+
+$(".contentContainer a.close").click(function() {
+  $(".contentContainer").removeClass("show");
+  $(".contentContainer").addClass("hide");
+  $("#container").removeClass("blur");
+  setTimeout(function() {
+    $(".contentContainer").hide();
+    $(".contentContainer").removeClass("hide");
+  },500);
+  return false;
+});
 
         Highcharts.setOptions({
             global: {
@@ -4480,14 +4504,20 @@ $( ".cardContainer" ).each(function( index ) {
               load: function() {
                   // set up the updating of the chart each second
                   var series = this.series[0];
+                  var prevY;
                   setInterval(function() {
-                      var x = (new Date()).getTime(), // current time
+                      var x = (new Date()).getTime(); // current time
+
                           //y = Math.random();
                           //y = parseInt($(this).closest(".cardContainer").attr("data-responsetime"), 10);
-                          y = parseInt($(currentObj).attr("data-responsetime"), 10);
+                          var y = parseInt($(currentObj).attr("data-responsetime"), 10);
                           //console.log(test);
-                      series.addPoint([x, y], true, true);
-                  }, frequencyVal);
+                          if(prevY != y) {
+                            series.addPoint([x, y], true, true);
+                          }
+                          prevY = y;
+
+                  }, 15000);
               }
           }
       },
@@ -4541,7 +4571,7 @@ $( ".cardContainer" ).each(function( index ) {
 
               for (i = -10; i <= 0; i++) {
                   data.push({
-                      x: time + i * 1000,
+                      x: time + i * frequencyVal,
                       y: Math.floor(Math.random()*(80-35+1)+35)
                   });
               }

@@ -15,13 +15,30 @@
               ?>
 
               <article id="post-<?php the_ID(); ?>" <?php post_class('cf'); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
+                <div id="ajaxload">
 
                 <header class="article-header">
 
                   <h1 class="entry-title single-title" itemprop="headline"><?php the_title(); ?></h1>
 
+                  <div class="largescreenshotContainer">
+                <?php
+                  if( function_exists('get_field') && get_field('screenshot') ):
+                    $attachment_id = get_field('screenshot'); $size = "large";
+                    $image = wp_get_attachment_image_src($attachment_id, $size);
+
+
+                    echo "<img class='largescreenshot' src='".$image[0]."' alt=' ' >";
+                  else:
+                    echo "<img class='largescreenshot' src='http://immediatenet.com/t/l3?Size=1280x1024&URL=http://".get_field('site_url')."' alt=' ' >";
+                    //echo "<div class='screenshotContainer'><div class='overlay'><div class='overlaytext'></div></div><img class='screenshot' src='http://api.thumbalizr.com/?url=http://".get_field('site_url')."&width=350' alt=' ' ></div>";
+                  endif;
+
+
+                ?>
+              </div>
                   <p class="byline vcard">
-                    <?php printf( __( 'Posted <time class="updated" datetime="%1$s" pubdate>%2$s</time> by <span class="author">%3$s</span>', 'bonestheme' ), get_the_time('Y-m-j'), get_the_time(get_option('date_format')), get_the_author_link( get_the_author_meta( 'ID' ) )); ?>
+                    <?php //printf( __( 'Posted <time class="updated" datetime="%1$s" pubdate>%2$s</time> by <span class="author">%3$s</span>', 'bonestheme' ), get_the_time('Y-m-j'), get_the_time(get_option('date_format')), get_the_author_link( get_the_author_meta( 'ID' ) )); ?>
                   </p>
 
                 </header> <?php // end article header ?>
@@ -43,23 +60,85 @@
                      * http://gizmodo.com/5841121/google-wants-to-help-you-avoid-stupid-annoying-multiple-page-articles
                      *
                     */
-                    wp_link_pages( array(
-                      'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'bonestheme' ) . '</span>',
-                      'after'       => '</div>',
-                      'link_before' => '<span>',
-                      'link_after'  => '</span>',
-                    ) );
+
                   ?>
+
+                  <p>Server: <?php the_field('server') ?></p>
+
+                  <?php
+
+
+
+
+
+                if(get_field('development_model') == "git") {
+
+                  if(get_field('git_repo_location') == "github") { ?>
+
+
+
+
+                      <?php
+                      $owner = get_field('github_organization');
+                      $repo = get_field('github_repository');
+
+
+                      $client = new GitHubClient();
+
+                      $client->setPage();
+                      $client->setPageSize(10);
+                      $commits = $client->repos->commits->listCommitsOnRepository($owner, $repo);  ?>
+
+
+                      <?php
+
+
+                      //echo "Count: " . count($commits) . "\n";
+                      $hash = $commits[0]->getSha();
+
+                      //$hash = $singlecommit->getSha();
+                      //$shadateurl = "http://github.com/".$owner."/".$repo."/commit/".$hash." .authorship local-time";
+                      echo "<p>Latest Commit: <a href='http://github.com/".$owner."/".$repo."/commit/".$hash."' data-tooltip='View Latest Commit' class='hashLink'>".$hash."</a></p>";
+
+                      ?>
+
+
+
+
+                  <?php } else if(get_field('git_repo_location') == "bitbucket") { ?>
+
+
+                  <!--	<script>
+                      var bitinstance = bitbucket.repository(<?php get_field('bitbucket_user'); ?>, <?php get_field('bitbucket_repo'); ?>)
+                      bitinstance.details(function (repo) {
+                        console.log(repo)
+                      })
+                    </script>-->
+
+            <?php } else if(get_field('git_repo_location') == "stash") {
+
+
+                  }
+
+
+              } else {
+                //If the site uses just FTP...
+
+
+              } ?>
+
+              <p>Grunt Configuration: </p>
+
                 </section> <?php // end article section ?>
 
                 <footer class="article-footer">
 
-                  <?php printf( __( 'Filed under: %1$s', 'bonestheme' ), get_the_category_list(', ') ); ?>
+                  <?php //printf( __( 'Filed under: %1$s', 'bonestheme' ), get_the_category_list(', ') ); ?>
 
                   <?php the_tags( '<p class="tags"><span class="tags-title">' . __( 'Tags:', 'bonestheme' ) . '</span> ', ', ', '</p>' ); ?>
 
                 </footer> <?php // end article footer ?>
 
-                <?php comments_template(); ?>
-
+                <?php //comments_template(); ?>
+                </div>
               </article> <?php // end article ?>

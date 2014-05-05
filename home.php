@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-
+ 
 			<div id="content" class="wrap">
 
 				<div id="inner-content" class="cf">
@@ -31,6 +31,8 @@
 							</div>
 						</div>
 					</div>
+
+
 
 						<div id="main" class="primaryHome m-all cf isotope" role="main">
 
@@ -187,7 +189,7 @@
 
 			<div class="entry-content">
 
-			<h2><a href="<?php the_permalink(); ?>" data-tooltip="View Details" class="name"><?php the_title(); ?></a></h2>
+			<h2><a href="<?php the_permalink(); ?>" data-tooltip="View Details" class="name details"><?php the_title(); ?></a></h2>
 			<div class="server"><?php the_field('server') ?></div>
 
 

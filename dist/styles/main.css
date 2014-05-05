@@ -4,6 +4,118 @@
   color: rgba(255, 255, 255, 0.9);
 }
 
+#container {
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+#container.blur {
+  -webkit-filter: blur(12px);
+  filter: blur(12px);
+}
+
+#ajaxload h1 {
+  margin-top: 0px;
+  margin-bottom: 1em;
+  color: #97cc18;
+}
+
+.largescreenshotContainer {
+  margin-left: -3em;
+  margin-right: -3em;
+  height: 200px;
+  overflow: hidden;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.largescreenshotContainer img {
+  width: 100%;
+}
+
+.contentContainer {
+  display: block;
+  position: fixed;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 3em;
+  top: 5em;
+  left: 5em;
+  right: 5em;
+  bottom: 0em;
+  margin: 0 auto;
+  background: #fff;
+  z-index: 10;
+  opacity: 0;
+  overflow: auto;
+  border-radius: 3px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  -webkit-box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.2);
+  -webkit-transform: translate3d(0px, -300px, 0px) rotate(-10deg);
+  -ms-transform: translate3d(0px, -300px, 0px) rotate(-10deg);
+  transform: translate3d(0px, -300px, 0px) rotate(-10deg);
+  -webkit-transform-origin: 0px center;
+  -ms-transform-origin: 0px center;
+  transform-origin: 0px center;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+.contentContainer .close {
+  display: block;
+  position: absolute;
+  top: 2em;
+  right: 2em;
+  width: 24px;
+  height: 24px;
+  z-index: 2;
+}
+.contentContainer .close svg {
+  height: 100%;
+  width: 100%;
+}
+.contentContainer .close svg path {
+  fill: rgba(0, 0, 0, 0.6);
+}
+.contentContainer .close:hover {
+  display: block;
+  position: absolute;
+  top: 2em;
+  right: 2em;
+  width: 24px;
+  height: 24px;
+  z-index: 2;
+}
+.contentContainer .close:hover svg {
+  height: 100%;
+  width: 100%;
+}
+.contentContainer .close:hover svg path {
+  fill: #f04f00;
+}
+
+.contentContainer.show {
+  display: block;
+  opacity: 1;
+  -webkit-transform: translate(0px, 0px) rotate(0deg);
+  -ms-transform: translate(0px, 0px) rotate(0deg);
+  transform: translate(0px, 0px) rotate(0deg);
+}
+
+.contentContainer.hide {
+  display: block;
+  opacity: 0;
+  -webkit-transform: translate(0px, 240px) rotate(10deg);
+  -ms-transform: translate(0px, 240px) rotate(10deg);
+  transform: translate(0px, 240px) rotate(10deg);
+  -webkit-transition: 0.4s cubic-bezier(0.49, 0.005, 0.74, 0.56);
+  transition: 0.4s cubic-bezier(0.49, 0.005, 0.74, 0.56);
+}
+
 #logo {
   margin-bottom: 0px;
 }
