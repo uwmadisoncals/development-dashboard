@@ -4208,7 +4208,7 @@ $( "a.details" ).click(function() {
   url = url + " #ajaxload";
 
 $(".contentContainer").show();
-  $.get( url, function(data) {
+  $.post( url, function(data) {
       data = $(data).find("#ajaxload");
       $( ".contentContainerContent" ).html( data );
       $(".contentContainer").addClass("show");
