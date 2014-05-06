@@ -7,7 +7,9 @@ $( "a.details" ).click(function() {
   url = url + " #ajaxload";
 
 $(".contentContainer").show();
-  $( ".contentContainerContent" ).load( url, function() {
+  $.get( url, function(data) {
+      data = $(data).find("#ajaxload");
+      $( ".contentContainerContent" ).html( data );
       $(".contentContainer").addClass("show");
       $("#container").addClass("blur");
 
