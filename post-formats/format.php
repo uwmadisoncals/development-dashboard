@@ -65,67 +65,7 @@
 
                   <p>Server: <?php the_field('server') ?></p>
 
-                  <?php
-
-
-
-
-
-                if(get_field('development_model') == "git") {
-
-                  if(get_field('git_repo_location') == "github") { ?>
-
-
-
-
-                      <?php
-                      $owner = get_field('github_organization');
-                      $repo = get_field('github_repository');
-
-
-                      $client = new GitHubClient();
-
-                      $client->setPage();
-                      $client->setPageSize(10);
-                      $commits = $client->repos->commits->listCommitsOnRepository($owner, $repo);  ?>
-
-
-                      <?php
-
-
-                      //echo "Count: " . count($commits) . "\n";
-                      $hash = $commits[0]->getSha();
-
-                      //$hash = $singlecommit->getSha();
-                      //$shadateurl = "http://github.com/".$owner."/".$repo."/commit/".$hash." .authorship local-time";
-                      echo "<p>Latest Commit: <a href='http://github.com/".$owner."/".$repo."/commit/".$hash."' data-tooltip='View Latest Commit' class='hashLink'>".$hash."</a></p>";
-
-                      ?>
-
-
-
-
-                  <?php } else if(get_field('git_repo_location') == "bitbucket") { ?>
-
-
-                  <!--	<script>
-                      var bitinstance = bitbucket.repository(<?php get_field('bitbucket_user'); ?>, <?php get_field('bitbucket_repo'); ?>)
-                      bitinstance.details(function (repo) {
-                        console.log(repo)
-                      })
-                    </script>-->
-
-            <?php } else if(get_field('git_repo_location') == "stash") {
-
-
-                  }
-
-
-              } else {
-                //If the site uses just FTP...
-
-
-              } ?>
+                
 
               <p>Grunt Configuration: </p>
 
