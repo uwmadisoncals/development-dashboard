@@ -1,5 +1,5 @@
 <?php get_header(); ?>
- 
+
 			<div id="content" class="wrap">
 
 				<div id="inner-content" class="cf">
@@ -193,13 +193,7 @@
 			<div class="server"><?php the_field('server') ?></div>
 
 
-			<?php
-
-
-
-
-
-		if(get_field('development_model') == "git") {
+			<?php if(get_field('development_model') == "git") {
 
 			if(get_field('git_repo_location') == "github") { ?>
 
@@ -213,8 +207,10 @@
 
 					$client = new GitHubClient();
 
+
 					$client->setPage();
 					$client->setPageSize(10);
+          if($commits) {
 					$commits = $client->repos->commits->listCommitsOnRepository($owner, $repo);  ?>
 
 
@@ -227,7 +223,8 @@
 					//$hash = $singlecommit->getSha();
 					//$shadateurl = "http://github.com/".$owner."/".$repo."/commit/".$hash." .authorship local-time";
 					echo "<div class='hashLabel'>Latest Commit</div><a href='http://github.com/".$owner."/".$repo."/commit/".$hash."' data-tooltip='View Latest Commit' class='hashLink'>".$hash."<div class='hashFade'></div></a><div class='hashArrow'><svg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 109.6 115.1' enable-background='new 0 0 109.6 115.1' xml:space='preserve'><polygon fill='#AE3424' points='0,0 0,115.1 109.6,0 '/></svg></div>";
-
+          }
+          
 					?>
 
 
@@ -274,7 +271,7 @@
 
 						</div>
 
-					<?php //get_sidebar(); ?>
+
 
 				</div>
 

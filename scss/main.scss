@@ -21,6 +21,52 @@ $blue-hover: #5394cb;
 
 }
 
+.cf:before,
+.cf:after,
+.row:before,
+.row:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after, .row:after {
+    clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf, .row {
+    *zoom: 1;
+}
+
+.span-25, .span-33, .span-50, .span-66, .span-75 {
+  box-sizing: border-box;
+  float: left;
+  margin-right: 5%;
+}
+
+.span-25 {
+  width: 20%;
+}
+
+.span-33 {
+  width: 28%;
+}
+
+.span-50 {
+  width: 45%;
+}
+
+.span-66 {
+  width: 61%;
+}
+
+.span-75 {
+  width: 70%;
+}
+
 #container.blur {
   filter: blur(12px);
 }
@@ -29,6 +75,37 @@ $blue-hover: #5394cb;
   margin-top: 0px;
   margin-bottom: 1em;
   color: $green;
+}
+
+#ajaxload h3 {
+  color: $orange-red;
+  border-bottom: 1px solid $orange-red;
+}
+
+#ajaxload span.label {
+  width: 30%;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 0.8em;
+  text-transform: uppercase;
+
+}
+
+#ajaxload .row a {
+  display: inline-block;
+  padding: 0.4em;
+  padding-left: 0.6em;
+  padding-right: 0.6em;
+  background: $blue;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 3px;
+  font-size: 0.8em;
+}
+
+#ajaxload .row a:hover {
+  background: $blue-hover;
 }
 
 .largescreenshotContainer {

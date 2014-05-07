@@ -44,6 +44,8 @@
                 </header> <?php // end article header ?>
 
                 <section class="entry-content cf" itemprop="articleBody">
+
+
                   <?php
                     // the content (pretty self explanatory huh)
                     the_content();
@@ -63,11 +65,76 @@
 
                   ?>
 
-                  <p>Server: <?php the_field('server') ?></p>
+                <div class="row">
+                  <div class="span-50">
+                    <h3>Configuration</h3>
 
-                
+                    <?php if(get_field('site_url_assigned')) { ?>
+                      <p><span class="label">URL:</span> <a href="<?php the_field('site_url') ?>" target="_blank"><?php the_field('site_url') ?></a></p>
 
-              <p>Grunt Configuration: </p>
+                      <p><span class="label">Server:</span> <?php $field = get_field_object('server');
+  $value = get_field('server');
+  $label = $field['choices'][ $value ]; echo $label; ?></p>
+
+                      <p><span class="label">Server Path: </span> /var/www/<?php the_field('ftp_path') ?></p>
+                    <?php } ?>
+
+
+
+                    <?php if(get_field('development_model') == "git") {
+
+                      if(get_field('git_repo_location') == "github") { ?>
+
+
+
+                          <?php
+
+                          $owner = get_field('github_organization');
+                          $repo = get_field('github_repository');
+
+                          echo "<p><span class='label'>Version Control: </span> <a href='http://github.com/".$owner."/".$repo."' target='_blank'>Github</a></p>";
+
+                          ?>
+
+
+
+
+                      <?php } else if(get_field('git_repo_location') == "bitbucket") { ?>
+
+
+                      <!--	<script>
+                          var bitinstance = bitbucket.repository(<?php get_field('bitbucket_user'); ?>, <?php get_field('bitbucket_repo'); ?>)
+                          bitinstance.details(function (repo) {
+                            console.log(repo)
+                          })
+                        </script>-->
+
+                <?php } else if(get_field('git_repo_location') == "stash") {
+
+
+                      }
+
+
+                  } else {
+                    //If the site uses just FTP...
+
+
+                  } ?>
+
+
+                    <?php if(get_field('preprocessors') != "none") { ?>
+                      <p><span class="label"><?php the_field('preprocessors') ?> Configuration:</span> <?php the_field('preprocessor_instructions') ?></p>
+                    <?php } ?>
+                  </div>
+
+                  <div class="span-50">
+                    <h3>Recent Changes</h3>
+
+                    <p>Changes Log</p>
+                  </div>
+
+
+                </div>
 
                 </section> <?php // end article section ?>
 

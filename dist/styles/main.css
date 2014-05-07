@@ -12,6 +12,56 @@
   transition: 0.4s;
 }
 
+.cf:before,
+.cf:after,
+.row:before,
+.row:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+
+.cf:after, .row:after {
+  clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf, .row {
+  *zoom: 1;
+}
+
+.span-25, .span-33, .span-50, .span-66, .span-75 {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  float: left;
+  margin-right: 5%;
+}
+
+.span-25 {
+  width: 20%;
+}
+
+.span-33 {
+  width: 28%;
+}
+
+.span-50 {
+  width: 45%;
+}
+
+.span-66 {
+  width: 61%;
+}
+
+.span-75 {
+  width: 70%;
+}
+
 #container.blur {
   -webkit-filter: blur(12px);
   filter: blur(12px);
@@ -21,6 +71,36 @@
   margin-top: 0px;
   margin-bottom: 1em;
   color: #97cc18;
+}
+
+#ajaxload h3 {
+  color: #f04f00;
+  border-bottom: 1px solid #f04f00;
+}
+
+#ajaxload span.label {
+  width: 30%;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 0.8em;
+  text-transform: uppercase;
+}
+
+#ajaxload .row a {
+  display: inline-block;
+  padding: 0.4em;
+  padding-left: 0.6em;
+  padding-right: 0.6em;
+  background: #7ebcf0;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 3px;
+  font-size: 0.8em;
+}
+
+#ajaxload .row a:hover {
+  background: #5394cb;
 }
 
 .largescreenshotContainer {
