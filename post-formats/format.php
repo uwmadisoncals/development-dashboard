@@ -66,17 +66,17 @@
                   ?>
 
                 <div class="row">
-                  <div class="span-50">
+                  <div class="span-50 configuration">
                     <h3>Configuration</h3>
 
                     <?php if(get_field('site_url_assigned')) { ?>
-                      <p><span class="label">URL:</span> <a href="<?php the_field('site_url') ?>" target="_blank"><?php the_field('site_url') ?></a></p>
+                      <p class="row"><span class="label span-33">URL:</span> <span class="span-66"><a href="<?php the_field('site_url') ?>" target="_blank"><?php the_field('site_url') ?></a></span></p>
 
-                      <p><span class="label">Server:</span> <?php $field = get_field_object('server');
+                      <p class="row"><span class="label span-33">Server:</span> <span class="span-66"><?php $field = get_field_object('server');
   $value = get_field('server');
-  $label = $field['choices'][ $value ]; echo $label; ?></p>
+  $label = $field['choices'][ $value ]; echo $label; ?></span></p>
 
-                      <p><span class="label">Server Path: </span> /var/www/<?php the_field('ftp_path') ?></p>
+                      <p class="row"><span class="label span-33">Server Path: </span> <span class="span-66">/var/www/<?php the_field('ftp_path') ?></span></p>
                     <?php } ?>
 
 
@@ -92,8 +92,8 @@
                           $owner = get_field('github_organization');
                           $repo = get_field('github_repository');
 
-                          echo "<p><span class='label'>Version Control: </span> <a href='http://github.com/".$owner."/".$repo."' target='_blank'>Github</a></p>";
-
+                          echo "<p class='row'><span class='label span-33'>Version Control: </span> <span class='span-66'><a href='http://github.com/".$owner."/".$repo."' target='_blank'>Github</a></span></p>";
+                          echo "<p class='row'><span class='label span-33'>Latest Commit:</span> <span class='span-66'><a href='http://github.com/".$owner."/".$repo."/commit' class='latestCommit' target='_blank'>Latest Commit</a></span></p>"
                           ?>
 
 
@@ -127,10 +127,10 @@
                     <?php } ?>
                   </div>
 
-                  <div class="span-50">
-                    <h3>Recent Changes</h3>
+                  <div class="span-50 loggedIssues">
+                    <h3>Logged Issues</h3>
 
-                    <p>Changes Log</p>
+                    <div class="issuesContainer">No Issues</div>
                   </div>
 
 

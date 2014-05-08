@@ -62,9 +62,13 @@
   width: 70%;
 }
 
+.listedIssues {
+  display: none;
+}
+
 #container.blur {
-  -webkit-filter: blur(12px);
-  filter: blur(12px);
+  -webkit-filter: blur(16px);
+  filter: blur(16px);
 }
 
 #ajaxload h1 {
@@ -79,14 +83,18 @@
 }
 
 #ajaxload span.label {
-  width: 30%;
   display: inline-block;
   font-weight: bold;
   font-size: 0.8em;
   text-transform: uppercase;
 }
 
-#ajaxload .row a {
+#ajaxload a.latestCommit {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+#ajaxload .configuration a {
   display: inline-block;
   padding: 0.4em;
   padding-left: 0.6em;
@@ -99,8 +107,20 @@
   font-size: 0.8em;
 }
 
-#ajaxload .row a:hover {
+#ajaxload .configuration a:hover {
   background: #5394cb;
+}
+
+#ajaxload .loggedIssues a {
+  display: block;
+  padding-top: 0.6em;
+  padding-bottom: 0.6em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.6);
+}
+
+#ajaxload .loggedIssues a:hover {
+  color: #5394cb;
 }
 
 .largescreenshotContainer {
@@ -127,7 +147,7 @@
   right: 5em;
   bottom: 0em;
   margin: 0 auto;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.7);
   z-index: 10;
   opacity: 0;
   overflow: auto;

@@ -203,18 +203,26 @@
 					<?php
 					$owner = get_field('github_organization');
 					$repo = get_field('github_repository');
-
+					$username = 'calsitacs';
+					$password = 'CALS_acs2014!';
 
 					$client = new GitHubClient();
 
-
+					$client->setCredentials($username, $password);
 					$client->setPage();
 					$client->setPageSize(10);
-          if($commits) {
-					$commits = $client->repos->commits->listCommitsOnRepository($owner, $repo);  ?>
 
+					$commits = $client->repos->commits->listCommitsOnRepository($owner, $repo);
+if($commits) {
+					echo "<div class='listedIssues'>";
+					$issues = $client->issues->listIssues($owner, $repo);
 
-					<?php
+foreach($issues as $issue)
+{
+    /* @var $issue GitHubIssue */
+    echo "<a href='http://github.com/".$owner."/".$repo."/issues/".$issue->getNumber()."'>".$issue->getTitle() . "</a>";
+}
+					echo "</div>";
 
 
 					//echo "Count: " . count($commits) . "\n";
@@ -222,9 +230,11 @@
 
 					//$hash = $singlecommit->getSha();
 					//$shadateurl = "http://github.com/".$owner."/".$repo."/commit/".$hash." .authorship local-time";
-					echo "<div class='hashLabel'>Latest Commit</div><a href='http://github.com/".$owner."/".$repo."/commit/".$hash."' data-tooltip='View Latest Commit' class='hashLink'>".$hash."<div class='hashFade'></div></a><div class='hashArrow'><svg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 109.6 115.1' enable-background='new 0 0 109.6 115.1' xml:space='preserve'><polygon fill='#AE3424' points='0,0 0,115.1 109.6,0 '/></svg></div>";
-          }
-          
+					echo "<div class='hashLabel'>Latest Commit</div><a href='http://github.com/".$owner."/".$repo."/commit/".$hash."' data-hash='".$hash."' data-tooltip='View Latest Commit' class='hashLink'>".$hash."<div class='hashFade'></div></a><div class='hashArrow'><svg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 109.6 115.1' enable-background='new 0 0 109.6 115.1' xml:space='preserve'><polygon fill='#AE3424' points='0,0 0,115.1 109.6,0 '/></svg></div>";
+
+
+					}
+
 					?>
 
 
@@ -260,9 +270,11 @@
 
 
 		</div>
-		<a href="#" class="responseContainer"><span class="responseContainerData"></span> <span class="responseContainerStatus"></span></a>
-		<div class='responseArrow'><svg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 109.6 115.1' enable-background='new 0 0 109.6 115.1' xml:space='preserve'><polygon fill='#AE3424' points='0,0 0,115.1 109.6,0 '/></svg></div>
 
+		<?php if(get_field('site_url_assigned') == true) { ?>
+			<a href="#" class="responseContainer"><span class="responseContainerData"></span> <span class="responseContainerStatus"></span></a>
+			<div class='responseArrow'><svg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 109.6 115.1' enable-background='new 0 0 109.6 115.1' xml:space='preserve'><polygon fill='#AE3424' points='0,0 0,115.1 109.6,0 '/></svg></div>
+		<?php } ?>
 
 	</div>
 	<?php endwhile; wp_reset_query(); ?>

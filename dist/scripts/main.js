@@ -4204,14 +4204,29 @@ $(document).ready(function() {
 
 $( "a.details" ).click(function() {
 
+  var hash = $(this).closest(".entry-content").find(".hashLink").attr("data-hash");
+  var issues = $(this).closest(".entry-content").find(".listedIssues").html();
   var url = $(this).attr("href");
   url = url + " #ajaxload";
+
+  //console.log(hash);
 
 $(".contentContainer").show();
   $( ".contentContainerContent" ).load( url, function() {
       $(".contentContainer").addClass("show");
       $("#container").addClass("blur");
 
+      if(issues) {
+        $(".issuesContainer").html(issues);
+      }
+
+      if(hash) {
+      var latCommitUrl = $("#ajaxload a.latestCommit").attr("href");
+      latCommitUrl = latCommitUrl + hash;
+
+      $("#ajaxload a.latestCommit").attr("href",latCommitUrl);
+      $("#ajaxload a.latestCommit").text(hash);
+    }
   });
 
   return false;
@@ -4220,8 +4235,9 @@ $(".contentContainer").show();
 $(".contentContainer a.close").click(function() {
   $(".contentContainer").removeClass("show");
   $(".contentContainer").addClass("hide");
-  $("#container").removeClass("blur");
+$("#container").removeClass("blur");
   setTimeout(function() {
+
     $(".contentContainer").hide();
     $(".contentContainer").removeClass("hide");
   },500);
